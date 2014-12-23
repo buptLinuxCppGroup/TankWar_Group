@@ -21,7 +21,7 @@ int main() {
 	TGame::getWorld(&world);
 	TPlayerTank player;
 	TGame::getPlayer(&player);
-	world.addTree2("./data/tree.b3d","./data/tree2.b3d",10,&player);
+	world.addTree2("F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/tree.b3d","F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/tree2.b3d",10,&player);
 	player.setAnimator(
 		TGame::smgr()->createCollisionResponseAnimator(
 		world.selector(), player.camera(),core::vector3df(200,400,200),

@@ -2,9 +2,7 @@
 #include "TEvent.h"
 #include "TMath.h"
 #include "THelp.h"
-#include "TBloodBar.h"
 #include <iostream>
-using namespace std;
 scene::ISceneManager* TGame::mSmgr = NULL;
 irr::IrrlichtDevice* TGame::mDevice = NULL;
 video::IVideoDriver* TGame::mDriver = NULL;
@@ -14,7 +12,6 @@ TPlayerTank* TGame::mPlayer = NULL;
 scene::ISceneManager * TGame::smgr()
 {
 	return mSmgr;
-	
 }
 
 irr::IrrlichtDevice * TGame::device()
@@ -69,11 +66,10 @@ void TGame::drop()
 
 void TGame::run(TPlayerTank * player)
 {
-	int i = 0;
 	TEvent* event = new TEvent(player);
 	TGame::device()->setEventReceiver(event);
 	while (mDevice->run()) {
-//		if (mDevice->isWindowActive()) {
+		if (mDevice->isWindowActive()) {
 			///事件处理器
 			//event->getRightRotation();
 			//event->getRightPosition();
@@ -98,19 +94,12 @@ void TGame::run(TPlayerTank * player)
 
 			///渲染部分
 			mDriver->beginScene(true, true, video::SColor(255, 200, 200, 200));
-			
 			mSmgr->drawAll();
-			cout << "请输入:" << endl;
-			cin >> i;
-			TBloodBar::TBloodBar(mDevice, mDriver, i);
-
-			
-
 			mDriver->endScene();
-//		}
-//		else {
-//			mDevice->yield();
-//		}
+		}
+		else {
+			mDevice->yield();
+		}
 	}
 	delete event;
 }

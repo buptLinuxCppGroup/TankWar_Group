@@ -1,0 +1,82 @@
+﻿Build started 2014/12/23 8:06:39.
+     1>Project "G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.Quake3Map\Quake3Map_vc11.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I..\..\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt TEvent.cpp
+         TEvent.cpp
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\include\iq3shader.h(474): warning C4458: declaration of 'x' hides class member
+         g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\include\iq3shader.h(466): note: see declaration of 'irr::scene::quake3::SModifierFunction::x'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\include\iq3shader.h(475): warning C4458: declaration of 'y' hides class member
+         g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\include\iq3shader.h(467): note: see declaration of 'irr::scene::quake3::SModifierFunction::y'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\include\keycodes.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(61): warning C4305: '+=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(66): warning C4305: '-=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(71): warning C4305: '+=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(76): warning C4305: '-=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(81): warning C4305: '+=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(86): warning C4305: '-=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(99): warning C4305: '+=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(104): warning C4305: '-=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(109): warning C4305: '+=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(114): warning C4305: '-=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(119): warning C4305: '+=': truncation from 'double' to 'irr::f32'
+     1>g:\fromi5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.quake3map\tevent.cpp(124): warning C4305: '-=': truncation from 'double' to 'irr::f32'
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\bin\Win32-VisualStudio\02.Quake3Map.exe" /NOLOGO /LIBPATH:"..\..\lib\Win32-visualstudio" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"..\..\bin\Win32-VisualStudio\02.Quake3Map.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /IMPLIB:"..\..\bin\Win32-VisualStudio\02.Quake3Map.lib" /MACHINE:X86 /SAFESEH Debug\main.obj
+         Debug\TConfig.obj
+         Debug\TEvent.obj
+         Debug\TGame.obj
+         Debug\THelp.obj
+         Debug\TMath.obj
+         Debug\TPlayerTank.obj
+         Debug\TTank.obj
+         Debug\TWorld.obj
+     1>main.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+     1>LIBCMTD.lib(dyn_tls_dtor.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(dyn_tls_dtor.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(dyn_tls_init.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(dyn_tls_init.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(matherr_detection.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(matherr_detection.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(guard_support.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(guard_support.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(gs_cookie.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(gs_cookie.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(gs_report.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(gs_report.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(gs_support.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(gs_support.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(pesect.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(pesect.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(cpu_disp.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(cpu_disp.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(secchk.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(secchk.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(loadcfg.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(loadcfg.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(argv_mode.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(argv_mode.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(commit_mode.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(commit_mode.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(denormal_control.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(denormal_control.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(file_mode.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(file_mode.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(fltused.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(fltused.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(invalid_parameter_handler.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(invalid_parameter_handler.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(matherr.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(matherr.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(new_mode.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(new_mode.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(thread_locale.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(thread_locale.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(ehvecctr.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(ehvecctr.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(ehvecdtr.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(ehvecdtr.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(std_type_info_static.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(std_type_info_static.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(tncleanup.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(tncleanup.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(delete_array.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(delete_array.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(delete_scalar.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(delete_scalar.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(new_array.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(new_array.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(new_scalar.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(new_scalar.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(throw_bad_alloc.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(throw_bad_alloc.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(thread_safe_statics.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(thread_safe_statics.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(exe_main.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(exe_main.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(tlssup.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(tlssup.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(initializers.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(initializers.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(utility.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(utility.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(default_precision.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(default_precision.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(utility_desktop.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(utility_desktop.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(utility_static.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(utility_static.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(error.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(error.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(init.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(init.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(initsect.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(initsect.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(pdblkup.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(pdblkup.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(stack.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(stack.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+     1>LIBCMTD.lib(userapi.obj) : warning LNK4099: PDB 'libcmtd.pdb' was not found with 'LIBCMTD.lib(userapi.obj)' or at 'G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\bin\Win32-VisualStudio\libcmtd.pdb'; linking object as if no debug info
+         Quake3Map_vc11.vcxproj -> G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.Quake3Map\..\..\bin\Win32-VisualStudio\02.Quake3Map.exe
+     1>Done Building Project "G:\fromI5\irrlicht-1.8.1\irrlicht-1.8.1\irrlicht-1.8.1\examples\02.Quake3Map\Quake3Map_vc11.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:09.27

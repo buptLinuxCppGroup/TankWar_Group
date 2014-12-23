@@ -67,8 +67,8 @@ TWorld::TWorld(io::path terrainFile)
 	this->mTerrain->setPosition(core::vector3df(0,0,0));
 	this->mTerrain->setRotation(core::vector3df(0.f,0.f,0.f));
 	this->mTerrain->setMaterialFlag(video::EMF_LIGHTING,false);
-	this->mTerrain->setMaterialTexture(0,TGame::driver()->getTexture("./data/terrain/ttex.jpg"));
-	this->mTerrain->setMaterialTexture(0, TGame::driver()->getTexture("./data/terrain/tdec.jpg"));
+	this->mTerrain->setMaterialTexture(0,TGame::driver()->getTexture("F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/terrain/ttex.jpg"));
+	this->mTerrain->setMaterialTexture(0, TGame::driver()->getTexture("F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/terrain/tdec.jpg"));
 	this->mTerrain->setMaterialType(video::EMT_DETAIL_MAP);
 	this->mTerrain->scaleTexture(1.0f,20.0f);
 	this->mTerrain->setMaterialFlag(video::EMF_FOG_ENABLE,false);

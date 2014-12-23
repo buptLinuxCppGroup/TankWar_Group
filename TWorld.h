@@ -23,7 +23,7 @@ public:
 
 	void addTree2(io::path file,io::path file2,int count, TPlayerTank* player,core::vector3df scale = core::vector3df(60.f,60.f,60.f));
 
-	TWorld(io::path terrainFile = "./data/terrain/terrain-heightmap.bmp");
+	TWorld(io::path terrainFile = "F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/terrain/terrain-heightmap.bmp");
 ~TWorld();
 };
 

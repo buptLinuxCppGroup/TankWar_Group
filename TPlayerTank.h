@@ -21,6 +21,7 @@ public:
 	void setAnimator(scene::ISceneNodeAnimator* tmp);//设置碰撞animator
 	void setTankAnimator(io::path animFile, io::path textureFile);//设置坦克animator
 	void letTankGround();//让坦克着地
+
 	
 	core::vector3df getPosition();
 	TPlayerTank();

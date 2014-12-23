@@ -5,7 +5,6 @@
 #include "TPlayerTank.h"
 #include "TWorld.h"
 #include "TMath.h"
-#include "TEnemyTank.h"
 using namespace std;
 using namespace irr;
 using namespace video;
@@ -22,14 +21,11 @@ int main() {
 	TGame::getWorld(&world);
 	TPlayerTank player;
 	TGame::getPlayer(&player);
-
-
 	world.addTree2("./data/tree.b3d","./data/tree2.b3d",10,&player);
-
 	player.setAnimator(
 		TGame::smgr()->createCollisionResponseAnimator(
-		world.selector(), player.camera(),core::vector3df(400,200,400),
-		core::vector3df(0.0f, -75.0f, 0.0f), core::vector3df(0, 100, 0)
+		world.selector(), player.camera(),core::vector3df(200,400,200),
+		core::vector3df(0.0f, -75.0f, 0.0f), core::vector3df(0, 0, 0)
 		)
 	);
 	/*player.tank()->addAnimator(
@@ -39,7 +35,6 @@ int main() {
 		)
 	);*/
 	
-	TEnemyTank enemy;
 
 	world.selector()->drop();
 

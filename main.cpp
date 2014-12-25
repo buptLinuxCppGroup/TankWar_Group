@@ -3,6 +3,7 @@
 #include <iostream>
 #include "TGame.h"
 #include "TPlayerTank.h"
+#include "TEnemyTank.h"
 #include "TWorld.h"
 #include "TMath.h"
 using namespace std;
@@ -37,6 +38,8 @@ int main() {
 	
 
 	world.selector()->drop();
+
+	TEnemyTank enemy;
 
 	/////ÓÎÏ·ÔËÐÐ
 	TGame::run(&player);

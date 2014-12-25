@@ -228,7 +228,7 @@ void TEvent::correctY()
 void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 {
 	if (TGame::player()->leftClick()) {
-		std::cerr << "cnm" << std::endl;
+		//std::cerr << "cnm" << std::endl;
 		core::line3d<f32> ray;
 		ray.start = TGame::player()->camera()->getPosition();
 		ray.start.Y -= 1;
@@ -245,20 +245,26 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 			TMath::printV3df(ray.start);
 		}
 
-		//core::vector3df intersection;
-		//core::triangle3df hitTriangle;
-		//scene::ISceneNode *node = 0;
-		//scene::ISceneNode * selectedSceneNode =
-		//	TGame::player()->collMan()->getSceneNodeAndCollisionPointFromRay(
-		//	ray,
-		//	intersection,
-		//	hitTriangle,
-		//	0,
-		//	0);
-		//if (selectedSceneNode) {
-		//	std::cerr << "here" << std::endl;
-		//	TMath::printV3df(selectedSceneNode->getPosition());
-		//}
+		core::vector3df intersection;
+		core::triangle3df hitTriangle;
+		scene::ISceneNode *node = 0;
+		scene::ISceneNode * selectedSceneNode =
+			TGame::player()->collMan()->getSceneNodeAndCollisionPointFromRay(
+			ray,
+			intersection,
+			hitTriangle,
+			0,
+			0);
+		std::cerr << "look:" << std::endl;
+		TMath::printV3df(intersection);
+
+		if (selectedSceneNode) {
+			std::cerr << "here" << std::endl;
+			TMath::printV3df(selectedSceneNode->getPosition());
+		}
+		else {
+			;
+		}
 	}
 }
 

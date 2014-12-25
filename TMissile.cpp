@@ -2,6 +2,7 @@
 #include "TGame.h"
 #include "TMath.h"
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 time_t TMissile::outTime()
@@ -23,7 +24,8 @@ TMissile::TMissile(core::vector3df pos, core::vector3df direction)
 {
 	this->pos = pos;
 	this->speed = TConfig::MISSILE_SPEED;
-	this->direction = direction;
+	this->direction = direction.normalize();
+	this->mOutTime = time(NULL);
 	setMissileAnimator(TConfig::MISSILE_3D_MESH_DIR.c_str(), TConfig::MISSILE_3D_TEXTURE_DIR.c_str(),pos);
 }
 
@@ -46,13 +48,21 @@ void TMissile::setMissileAnimator(io::path animFile, io::path textureFile,core::
 
 void TMissile::update()
 {
-	pos=pos + direction.normalize()*speed;
-	mMissile->setPosition(pos);
+	cerr << "1" << endl;
+
 	TMath::printV3df(pos);
+
+	pos=pos + direction*speed*10;
+
+	mMissile->setPosition(pos);
+	
+	TMath::printV3df(pos);
+	TMath::printV3df(direction);
 }
 
 void TMissile::drop() {
-	mMissile->drop();
+	mMissile->setVisible(false);
+	//mMissile->drop();
 }
 
 TMissile::~TMissile()

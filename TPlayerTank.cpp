@@ -31,7 +31,7 @@ bool TPlayerTank::timePermites()
 		return false;
 }
 
-std::list<TMissile>& TPlayerTank::missileQueue()
+std::vector<TMissile>& TPlayerTank::missileQueue()
 {
 	return mMissileQueue;
 }

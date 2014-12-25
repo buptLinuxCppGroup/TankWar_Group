@@ -19,7 +19,7 @@ private:
 	time_t mLastMissileTime;
 
 public:
-	std::list<TMissile> mMissileQueue;
+	std::vector<TMissile> mMissileQueue;
 
 	bool isRunning;
 	bool leftClick();
@@ -27,7 +27,7 @@ public:
 
 	bool timePermites();//导弹间隔时限已过（cd）
 
-	std::list<TMissile>& missileQueue();
+	std::vector<TMissile>& missileQueue();
 
 	scene::ISceneNodeAnimator* animator();
 	scene::ICameraSceneNode* camera();

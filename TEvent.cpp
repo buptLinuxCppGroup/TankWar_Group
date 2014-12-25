@@ -237,7 +237,7 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 		
 		if (TGame::player()->timePermites()) {
 			cerr << "permit" << endl;//Ok,能正常识别时间，每隔3秒允许
-			TGame::player()->missileQueue().push_back(TMissile(TGame::player()->camera()->getPosition(), TGame::player()->camera()->getRotation()));
+			//TGame::player()->missileQueue().push_back(TMissile(TGame::player()->camera()->getPosition(), (TGame::player()->camera()->getTarget() - ray.start).normalize()));
 			cerr << TGame::player()->missileQueue().size() << endl;
 		}
 
@@ -280,16 +280,19 @@ void TEvent::updateMissiles()
 	for (auto it = missileList.begin(); it != missileList.end();it++) {
 		auto missile = *it;
 		if (nowTime - missile.outTime() > TConfig::MISSILE_EXIST_TIME) {
+			cerr << nowTime << endl;
+			cerr << "dd" << endl;
+			cerr << missile.outTime() << endl;
 			missile.drop();
 			missileList.erase(it);
+			break;
 		}
 		else {
 			break;
 		}
 	}
 	//cerr << missileList.size() << endl;
-	for (auto missile : missileList) {
-		cerr << "here1" << endl;
+	for (auto& missile : missileList) {
 		missile.update();
 	}
 }

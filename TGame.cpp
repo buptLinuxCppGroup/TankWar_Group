@@ -73,11 +73,13 @@ void TGame::run(TPlayerTank * player)
 	int i = 0;
 	TEvent* event = new TEvent(player);
 	TGame::device()->setEventReceiver(event);
-	while (mDevice->run()) {
-//		if (mDevice->isWindowActive()) {
-			///事件处理器
-			//event->getRightRotation();
-			//event->getRightPosition();
+	if (mDevice->isWindowActive()) {
+		while (mDevice->run()) {
+			//		if (mDevice->isWindowActive()) {
+						///事件处理器
+						//event->getRightRotation();
+						//event->getRightPosition();
+
 			event->showInfo();
 			//event->moveTankPos();
 			//event->moveTankRotation();
@@ -98,31 +100,33 @@ void TGame::run(TPlayerTank * player)
 
 			///渲染部分
 			mDriver->beginScene(true, true, video::SColor(255, 200, 200, 200));
-			
-			
+
+
 			//TGame::driver()->draw3DLine(st, ed, video::SColor(255, 0, 0, 0));
 
 			event->setStEd(TConfig::st, TConfig::ed);
 
-			
+
 			//TGame::driver()->draw3DLine(TConfig::st, TConfig::ed, video::SColor(255, 0, 0, 0));
-			
-			
+
+
 			event->leftMouse(TConfig::st, TConfig::ed);
-			
-			event->updateMissiles();
+
 			mSmgr->drawAll();
+
+			event->updateMissiles();
 			//TBloodBar::TBloodBar(mDevice, mDriver, 100);
 
-			
 
-			
+
+
 
 			mDriver->endScene();
-//		}
-//		else {
-//			mDevice->yield();
-//		}
+			//		}
+			//		else {
+			//			mDevice->yield();
+			//		}
+		}
 	}
 	delete event;
 }

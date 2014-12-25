@@ -1,7 +1,18 @@
 #include "TMissile.h"
 #include "TGame.h"
 #include "TMath.h"
+#include <iostream>
+using namespace std;
 
+time_t TMissile::outTime()
+{
+	return mOutTime;
+}
+
+time_t TMissile::outTime(time_t ttime)
+{
+	return mOutTime=ttime;
+}
 
 scene::IAnimatedMeshSceneNode * TMissile::missile()
 {
@@ -37,6 +48,7 @@ void TMissile::update()
 {
 	pos=pos + direction.normalize()*speed;
 	mMissile->setPosition(pos);
+	TMath::printV3df(pos);
 }
 
 void TMissile::drop() {

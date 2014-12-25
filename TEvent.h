@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "TPlayerTank.h"
+#include "TMissile.h"
 #include "TInfo.h"
 #include "TMissile.h"
 using namespace irr;
@@ -24,6 +25,7 @@ public:
 	void moveTankRotation();
 	void correctY();
 	void leftMouse(core::vector3df st, core::vector3df ed);
+	void updateMissiles();
 	void print_objApos_Minus_objBpos(scene::ISceneNode* a, scene::ISceneNode* b);
 	void setStEd(core::vector3df& st, core::vector3df& ed) {
 		if (isKeyDown(KEY_KEY_X)) {

@@ -109,6 +109,8 @@ void TGame::run(TPlayerTank * player)
 			
 			
 			event->leftMouse(TConfig::st, TConfig::ed);
+			
+			event->updateMissiles();
 			mSmgr->drawAll();
 			//TBloodBar::TBloodBar(mDevice, mDriver, 100);
 

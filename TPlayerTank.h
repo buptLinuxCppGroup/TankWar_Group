@@ -4,6 +4,8 @@
 #include <irrlicht.h>
 #include "TMissile.h"
 #include <queue>
+#include <list>
+#include <vector>
 using namespace irr;
 class TPlayerTank : public TTank
 {
@@ -16,15 +18,16 @@ private:
 
 	time_t mLastMissileTime;
 
-	std::queue<TMissile> mMissileQueue;
 public:
+	std::list<TMissile> mMissileQueue;
+
 	bool isRunning;
 	bool leftClick();
 	void leftClick(bool tclick);
 
 	bool timePermites();//导弹间隔时限已过（cd）
 
-	std::queue<TMissile> missileQueue();
+	std::list<TMissile>& missileQueue();
 
 	scene::ISceneNodeAnimator* animator();
 	scene::ICameraSceneNode* camera();

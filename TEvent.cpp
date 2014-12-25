@@ -174,6 +174,7 @@ void TEvent::showInfo()
 		//TInfo::showTankPos();
 		//TInfo::showWorldScale();
 		//TInfo::showCameraTarget();
+		TMath::printV3df(TConfig::st);
 	}
 }
 
@@ -224,30 +225,40 @@ void TEvent::correctY()
 	TGame::player()->camera()->setTarget(target);
 }
 
-void TEvent::leftMouse()
+void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 {
 	if (TGame::player()->leftClick()) {
 		std::cerr << "cnm" << std::endl;
 		core::line3d<f32> ray;
 		ray.start = TGame::player()->camera()->getPosition();
-		ray.end = ray.start + (TGame::player()->camera()->getTarget() - ray.start).normalize() * 500.0f;
+		ray.start.Y -= 1;
+		ray.end = ray.start + (TGame::player()->camera()->getTarget() - ray.start).normalize() * 5000.0f;
 		
-		TGame::driver()->draw3DLine(ray.start,ray.end);
 		
-		core::vector3df intersection;
-		core::triangle3df hitTriangle;
-		scene::ISceneNode *node = 0;
-		scene::ISceneNode * selectedSceneNode =
-			TGame::player()->collMan()->getSceneNodeAndCollisionPointFromRay(
-			ray,
-			intersection,
-			hitTriangle,
-			0,
-			0);
-		if (selectedSceneNode) {
-			std::cerr << "here" << std::endl;
-			TMath::printV3df(selectedSceneNode->getPosition());
+
+		//TGame::driver()->draw3DLine(st, ed, video::SColor(255, 0, 0, 0));
+		//TGame::driver()->draw3DLine(ray.start, st,video::SColor(255,0,0,0));
+		TGame::driver()->draw3DLine(ray.start, ray.end, video::SColor(255, 0, 0, 0));
+
+		if (isKeyDown(KEY_KEY_Z)) {
+			std::cerr << "her" << std::endl;
+			TMath::printV3df(ray.start);
 		}
+
+		//core::vector3df intersection;
+		//core::triangle3df hitTriangle;
+		//scene::ISceneNode *node = 0;
+		//scene::ISceneNode * selectedSceneNode =
+		//	TGame::player()->collMan()->getSceneNodeAndCollisionPointFromRay(
+		//	ray,
+		//	intersection,
+		//	hitTriangle,
+		//	0,
+		//	0);
+		//if (selectedSceneNode) {
+		//	std::cerr << "here" << std::endl;
+		//	TMath::printV3df(selectedSceneNode->getPosition());
+		//}
 	}
 }
 

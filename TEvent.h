@@ -22,8 +22,32 @@ public:
 	void moveTankPos();
 	void moveTankRotation();
 	void correctY();
-	void leftMouse();
+	void leftMouse(core::vector3df st, core::vector3df ed);
 	void print_objApos_Minus_objBpos(scene::ISceneNode* a, scene::ISceneNode* b);
-~TEvent();
+	void setStEd(core::vector3df& st, core::vector3df& ed) {
+		if (isKeyDown(KEY_KEY_X)) {
+			std::cerr << "press x" << std::endl;
+			st = TGame::player()->camera()->getPosition();
+		}
+		if (isKeyDown(KEY_KEY_U)) {
+			st.X += 0.1;
+		}
+		else if (isKeyDown(KEY_KEY_J)) {
+			st.X -= 0.1;
+		}
+		else if (isKeyDown(KEY_KEY_O)) {
+			st.Z += 0.1;
+		}
+		else if (isKeyDown(KEY_KEY_L)) {
+			st.Z -= 0.1;
+		}
+		else if (isKeyDown(KEY_KEY_I)) {
+			st.Y += 0.1;
+		}
+		else if (isKeyDown(KEY_KEY_K)) {
+			st.Y -= 0.1;
+		}
+	}
+	~TEvent();
 };
 

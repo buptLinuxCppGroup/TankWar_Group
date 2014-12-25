@@ -2,6 +2,7 @@
 #include "TEvent.h"
 #include "TMath.h"
 #include "THelp.h"
+#include "TConfig.h"
 #include "TBloodBar.h"
 #include <iostream>
 using namespace std;
@@ -78,10 +79,9 @@ void TGame::run(TPlayerTank * player)
 			//event->getRightRotation();
 			//event->getRightPosition();
 			event->showInfo();
-			event->moveTankPos();
-			event->moveTankRotation();
+			//event->moveTankPos();
+			//event->moveTankRotation();
 			event->correctY();
-			event->leftMouse();
 			//THelp::showPlayerPos(player);//显示摄像机位置
 			//player->tank()->setPosition(player->camera()->getPosition());
 
@@ -99,10 +99,20 @@ void TGame::run(TPlayerTank * player)
 			///渲染部分
 			mDriver->beginScene(true, true, video::SColor(255, 200, 200, 200));
 			
+			
+			//TGame::driver()->draw3DLine(st, ed, video::SColor(255, 0, 0, 0));
+
+			event->setStEd(TConfig::st, TConfig::ed);
+
+			
+			//TGame::driver()->draw3DLine(TConfig::st, TConfig::ed, video::SColor(255, 0, 0, 0));
+			
+			
+			event->leftMouse(TConfig::st, TConfig::ed);
 			mSmgr->drawAll();
-			cout << "请输入:" << endl;
-			cin >> i;
-			TBloodBar::TBloodBar(mDevice, mDriver, i);
+			//TBloodBar::TBloodBar(mDevice, mDriver, 100);
+
+			
 
 			
 

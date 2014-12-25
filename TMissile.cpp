@@ -48,16 +48,16 @@ void TMissile::setMissileAnimator(io::path animFile, io::path textureFile,core::
 
 void TMissile::update()
 {
-	cerr << "1" << endl;
+	//cerr << "1" << endl;
 
-	TMath::printV3df(pos);
+	//TMath::printV3df(pos);
 
 	pos=pos + direction*speed*10;
 
 	mMissile->setPosition(pos);
 	
-	TMath::printV3df(pos);
-	TMath::printV3df(direction);
+	//TMath::printV3df(pos);
+	//TMath::printV3df(direction);
 }
 
 void TMissile::drop() {

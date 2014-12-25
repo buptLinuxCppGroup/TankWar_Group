@@ -4,6 +4,7 @@
 #include <string>
 #include "TPlayerTank.h"
 #include "TInfo.h"
+#include "TMissile.h"
 using namespace irr;
 class TEvent : public IEventReceiver 
 {

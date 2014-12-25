@@ -237,7 +237,7 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 		
 		if (TGame::player()->timePermites()) {
 			cerr << "permit" << endl;//Ok,能正常识别时间，每隔3秒允许
-			//TGame::player()->missileQueue().push_back(TMissile(TGame::player()->camera()->getPosition(), (TGame::player()->camera()->getTarget() - ray.start).normalize()));
+			TGame::player()->missileQueue().push_back(TMissile(TGame::player()->camera()->getPosition(), (TGame::player()->camera()->getTarget() - ray.start).normalize()));
 			cerr << TGame::player()->missileQueue().size() << endl;
 		}
 

@@ -18,6 +18,10 @@ public:
 	//导弹速度
 	static f32 MISSILE_SPEED;
 
+	//导弹发射间隔时间和导弹存在时间
+	static int MISSILE_INTERVAL_TIME;
+	static int MISSILE_EXIST_TIME;
+
 	static core::vector3df TANK_INIT_ROTATION;
 	static core::vector3df getTANKpos_MINUS_CAMERApos();
 

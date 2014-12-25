@@ -12,6 +12,10 @@ std::string TConfig::MISSILE_3D_TEXTURE_DIR = "./data/Ì¹¿ËÄ£ÐÍ2/churchill/church
 
 f32 TConfig::MISSILE_SPEED = 1.0;
 
+int TConfig::MISSILE_INTERVAL_TIME = 1;
+int TConfig::MISSILE_EXIST_TIME = 5;
+
+
 core::vector3df TConfig::st = core::vector3df(2341.42, 349.962, 1969.35);
 core::vector3df TConfig::ed = core::vector3df(1610.4, 1435.141, 2132.17);
 

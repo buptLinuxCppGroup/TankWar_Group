@@ -3,6 +3,7 @@
 #include "TMath.h"
 #include "TConfig.h"
 #include <iostream>
+using namespace std;
 
 
 TEvent::TEvent(TPlayerTank* tplayer)
@@ -234,7 +235,10 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 		ray.start.Y -= 1;
 		ray.end = ray.start + (TGame::player()->camera()->getTarget() - ray.start).normalize() * 5000.0f;
 		
-		
+		if (TGame::player()->timePermites()) {
+			cerr << "permit" << endl;//Ok,能正常识别时间，每隔3秒允许
+			
+		}
 
 		//TGame::driver()->draw3DLine(st, ed, video::SColor(255, 0, 0, 0));
 		//TGame::driver()->draw3DLine(ray.start, st,video::SColor(255,0,0,0));
@@ -255,8 +259,8 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 			hitTriangle,
 			0,
 			0);
-		std::cerr << "look:" << std::endl;
-		TMath::printV3df(intersection);
+		//std::cerr << "look:" << std::endl;
+		//TMath::printV3df(intersection);
 
 		if (selectedSceneNode) {
 			std::cerr << "here" << std::endl;

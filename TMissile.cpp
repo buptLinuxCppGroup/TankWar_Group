@@ -39,6 +39,9 @@ void TMissile::update()
 	mMissile->setPosition(pos);
 }
 
+void TMissile::drop() {
+	mMissile->drop();
+}
 
 TMissile::~TMissile()
 {

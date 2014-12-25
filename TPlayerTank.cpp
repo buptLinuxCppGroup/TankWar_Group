@@ -19,6 +19,23 @@ void TPlayerTank::leftClick(bool tclick)
 	mLeftClick = tclick;
 }
 
+bool TPlayerTank::timePermites()
+{
+	time_t nowTime;
+	nowTime = time(NULL);
+	if (nowTime - mLastMissileTime >= TConfig::MISSILE_INTERVAL_TIME) {
+		mLastMissileTime = nowTime;
+		return true;
+	}
+	else
+		return false;
+}
+
+std::queue<TMissile> TPlayerTank::missileQueue()
+{
+	return mMissileQueue;
+}
+
 scene::ISceneNodeAnimator * TPlayerTank::animator()
 {
 	return mCollAnim;
@@ -96,6 +113,8 @@ TPlayerTank::TPlayerTank()
 
 	mLeftClick = false;
 	mCollMan = TGame::smgr()->getSceneCollisionManager();
+
+	mLastMissileTime = 0;
 }
 
 

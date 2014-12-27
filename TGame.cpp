@@ -15,7 +15,6 @@ TPlayerTank* TGame::mPlayer = NULL;
 scene::ISceneManager * TGame::smgr()
 {
 	return mSmgr;
-	
 }
 
 irr::IrrlichtDevice * TGame::device()
@@ -83,7 +82,7 @@ void TGame::run(TPlayerTank * player)
 			event->showInfo();
 			//event->moveTankPos();
 			//event->moveTankRotation();
-			event->correctY();
+			//event->correctY();
 			//THelp::showPlayerPos(player);//ÏÔÊ¾ÉãÏñ»úÎ»ÖÃ
 			//player->tank()->setPosition(player->camera()->getPosition());
 

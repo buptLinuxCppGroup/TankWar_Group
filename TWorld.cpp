@@ -19,6 +19,11 @@ scene::ILightSceneNode * TWorld::light()
 	return mLight;
 }
 
+CGrassPatchSceneNode ** TWorld::grassNode()
+{
+	return NULL;
+}
+
 void TWorld::addTree2(io::path file, io::path file2, int count , TPlayerTank* player, core::vector3df scale)
 {
 	mTreeMaterial.Lighting = true;
@@ -56,7 +61,36 @@ void TWorld::addTree2(io::path file, io::path file2, int count , TPlayerTank* pl
 	}
 }
 
+void TWorld::addGrass(s32 size, path phMap, path pgrassCol, path pgrassMap, path pgrassTex1, path pgrassTex2) {
+	video::ITexture *tex1;
+	video::ITexture *tex2;
 
+	mGrassSize = size;
+	mWind = scene::createWindGenerator(30.0f, 3.0f);
+	video::IImage* heightMap = TGame::driver()->createImageFromFile(phMap);// TGame::checkErrorFile(heightMap, "Error loading file: ", phMap);
+	video::IImage* textureMap = TGame::driver()->createImageFromFile(pgrassCol);  //TGame::checkErrorFile(textureMap, "Error loading file: ", pgrassCol);
+	video::IImage* grassMap = TGame::driver()->createImageFromFile(pgrassMap);// TGame::checkErrorFile(grassMap, "Error loading file: ", pgrassMap);
+	mGrass = new CGrassPatchSceneNode*[size*size];
+	tex1 = TGame::driver()->getTexture(pgrassTex1);	//TGame::checkErrorFile(tex1, "Error loading file: ", pgrassTex1);
+	tex2 = TGame::driver()->getTexture(pgrassTex2);// TGame::checkErrorFile(tex2, "Error loading file: ", pgrassTex2);
+	TGame::driver()->makeColorKeyTexture(tex2, core::position2d<s32>(0, 0));
+	for (int x = 0; x<size; ++x) {
+		for (int z = 0; z<size; ++z) {
+			// add a grass node        
+			mGrass[x*size + z] = new scene::CGrassPatchSceneNode(mTerrain, TGame::smgr(), -1, core::vector3d<s32>(x, 0, z), "grass", heightMap, textureMap, grassMap, mWind);
+			mGrass[x*size + z]->setMaterialFlag(video::EMF_LIGHTING, false);
+			//mGrass[x*size + z]->setMaterialFlag(video::EMF_FOG_ENABLE, this->fog());
+			mGrass[x*size + z]->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF);
+			mGrass[x*size + z]->getMaterial(0).TextureLayer[0].TextureWrapV = video::ETC_CLAMP;
+			mGrass[x*size + z]->getMaterial(0).MaterialTypeParam = 0.5f;
+			mGrass[x*size + z]->setMaterialTexture(0, tex1);
+			mGrass[x*size + z]->setMaterialFlag(video::EMF_BACK_FACE_CULLING, true);	
+			mGrass[x*size + z]->setDrawDistance(10000);
+			mGrass[x*size + z]->setMaxDensity(1000);
+			mGrass[x*size + z]->drop();
+		}
+	}
+}
 
 
 TWorld::TWorld(io::path terrainFile)
@@ -68,18 +102,37 @@ TWorld::TWorld(io::path terrainFile)
 	this->mTerrain->setRotation(core::vector3df(0.f,0.f,0.f));
 	this->mTerrain->setMaterialFlag(video::EMF_LIGHTING,false);
 	this->mTerrain->setMaterialTexture(0,TGame::driver()->getTexture("./data/terrain/ttex.jpg"));
-	this->mTerrain->setMaterialTexture(0, TGame::driver()->getTexture("./data/terrain/tdec.jpg"));
+
 	this->mTerrain->setMaterialType(video::EMT_DETAIL_MAP);
 	this->mTerrain->scaleTexture(1.0f,20.0f);
 	this->mTerrain->setMaterialFlag(video::EMF_FOG_ENABLE,false);
 	this->mTerrain->setMaterialFlag(video::EMF_BACK_FACE_CULLING, true);
 	this->mSelector = TGame::smgr()->createTerrainTriangleSelector(this->mTerrain,0);
 	this->mTerrain->setTriangleSelector(this->mSelector);
-	this->mTerrain->setScale((TMath::dragScale(mTerrain->getScale(),3)));
 
 	//µÆ¹â×¼±¸
 	this->mLight = TGame::smgr()->addLightSceneNode();
 }
+
+void TWorld::skybox(path top, path bottom, path left, path right, path front, path back) {
+	mSkybox = TGame::smgr()->addSkyBoxSceneNode(
+		TGame::driver()->getTexture(top),		//up
+		TGame::driver()->getTexture(bottom),	//down
+		TGame::driver()->getTexture(left),		//left
+		TGame::driver()->getTexture(right),		//right
+		TGame::driver()->getTexture(front),		//front
+		TGame::driver()->getTexture(back)		//back
+		);
+}
+
+ISceneNode* TWorld::skybox() {
+	return this->mSkybox;
+}
+
+void TWorld::skydome(path file, u32 horiRes, u32 vertRes, f32 texturePercentage, f32 spherePercentage, f32 radius) {
+	mSkydome = TGame::smgr()->addSkyDomeSceneNode(TGame::driver()->getTexture(file), horiRes, vertRes, texturePercentage, spherePercentage, radius);
+}
+
 
 TWorld::~TWorld()
 {

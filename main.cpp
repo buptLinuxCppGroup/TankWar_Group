@@ -40,12 +40,7 @@ int main() {
 	);
 
 	
-	/*player.tank()->addAnimator(
-		TGame::smgr()->createCollisionResponseAnimator(
-		world.selector(), player.tank(), player.tank()->getScale() ,
-		core::vector3df(0.0f, -1.0f, 0.0f), core::vector3df(0, 0, 0)
-		)
-	);*/
+	
 	
 
 	world.selector()->drop();

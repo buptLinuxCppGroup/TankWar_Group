@@ -11,7 +11,15 @@ private:
 	core::vector3df direction;
 	f32 speed;
 	time_t mOutTime;
+
+	scene::ISceneNode* light2;
+	scene::ISceneNodeAnimator* anim;
+	scene::IBillboardSceneNode* bill;
+	scene::IParticleSystemSceneNode* ps;
+	scene::IParticleEmitter* em;
+	scene::IParticleAffector* paf;
 public:
+	void enimInit();
 	TMissile(core::vector3df pos, core::vector3df direction);
 	time_t outTime();
 	time_t outTime(time_t ttime);

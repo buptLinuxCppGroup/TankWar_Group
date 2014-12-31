@@ -5,6 +5,8 @@
 #include <ctime>
 using namespace std;
 
+bool TMissile::hasGravity=false;
+
 time_t TMissile::outTime()
 {
 	return mOutTime;
@@ -25,6 +27,7 @@ void TMissile::enimInit()
 	switch (TConfig::MISSILE_KIND)
 	{
 	case 1: {
+		TMissile::hasGravity = true;
 		TConfig::MISSILE_INTERVAL_TIME = 1.0;
 		TConfig::MISSILE_DAMAGE1 = 5000;
 		TConfig::MISSILE_EXIST_TIME = 10;
@@ -33,6 +36,7 @@ void TMissile::enimInit()
 		break;
 	}
 	case 2: {
+		TMissile::hasGravity = false;
 		TConfig::MISSILE_INTERVAL_TIME = 1.0;
 		TConfig::MISSILE_DAMAGE1 = 2000;
 		TConfig::MISSILE_EXIST_TIME = 8;
@@ -41,6 +45,7 @@ void TMissile::enimInit()
 		break;
 	}
 	case 3: {
+		TMissile::hasGravity = false;
 		TConfig::MISSILE_INTERVAL_TIME = 0.0;
 		TConfig::MISSILE_DAMAGE1 = 700;
 		TConfig::MISSILE_EXIST_TIME = 4;
@@ -83,8 +88,8 @@ void TMissile::missileKind1()
 		core::vector3df(0.0f, 0.03f, 0.0f),
 		80, 100,
 		video::SColor(10, 255, 255, 255), video::SColor(10, 255, 255, 255),
-		400, 1100);
-	em->setMinStartSize(core::dimension2d<f32>(30.0f, 40.0f));
+		600, 1000);
+	em->setMinStartSize(core::dimension2d<f32>(130.0f, 140.0f));
 	em->setMaxStartSize(core::dimension2d<f32>(300.0f, 400.0f));
 
 	ps->setEmitter(em);
@@ -98,7 +103,8 @@ void TMissile::missileKind1()
 	// adjust some material settings
 	ps->setMaterialFlag(video::EMF_LIGHTING, false);
 	ps->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
-	ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/fireball.bmp"));
+	ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/particlered.bmp"));
+	//ps->setMaterialTexture(0, TGame::driver()->getTexture("./data/red.jpg"));
 	//ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/portal2.bmp"));
 	ps->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
 }
@@ -237,6 +243,10 @@ void TMissile::update()
 
 	//TMath::printV3df(pos);
 
+	//Αρµ―Δ£Κ½
+	if (hasGravity) {
+		direction.Y -= 0.007;
+	}
 
 	pos=pos + direction*speed*10;
 

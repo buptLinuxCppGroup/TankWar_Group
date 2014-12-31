@@ -6,6 +6,8 @@ using namespace irr;
 class TMissile
 {
 private:
+	static bool hasGravity;
+
 	scene::IAnimatedMeshSceneNode* mMissile;
 	core::vector3df pos;
 	core::vector3df direction;

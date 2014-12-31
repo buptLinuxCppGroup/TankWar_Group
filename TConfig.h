@@ -33,7 +33,10 @@ public:
 	const static int MISSILE_HP_UP = 3000;
 	const static int MISSILE_HP_DOWN = 1000;
 
+	//坦克初始旋转角度
 	static core::vector3df TANK_INIT_ROTATION;
+
+	//没用的
 	static core::vector3df getTANKpos_MINUS_CAMERApos();
 
 	static core::vector3df st ;

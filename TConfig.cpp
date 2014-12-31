@@ -11,9 +11,9 @@ core::vector3df TConfig::TANKpos_MINUS_CAMERApos = core::vector3df(-60.583,0,-68
 std::string TConfig::MISSILE_3D_MESH_DIR = "./data/坦克模型/churchill.obj";
 std::string TConfig::MISSILE_3D_TEXTURE_DIR = "./data/坦克模型2/churchill/churchill/Churchill.tga";
 
-f32 TConfig::MISSILE_SPEED = 3.0;
+f32 TConfig::MISSILE_SPEED = 10.0;
 
-int TConfig::MISSILE_INTERVAL_TIME = 0;
+int TConfig::MISSILE_INTERVAL_TIME = 1;
 int TConfig::MISSILE_EXIST_TIME = 10;
 
 

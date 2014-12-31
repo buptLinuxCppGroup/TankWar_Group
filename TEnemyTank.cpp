@@ -27,7 +27,7 @@ int TEnemyTank::hp()
 
 void TEnemyTank::beAttacked()
 {
-	mHp -= TConfig::MISSILE_DAMAGE1;
+	mHp -= TConfig::MISSILE_DAMAGE1+TMath::randomBetweenMinMax(0,TConfig::MISSILE_DAMAGE_AROUND);
 }
 
 void TEnemyTank::reInit()
@@ -40,6 +40,8 @@ void TEnemyTank::reInit()
 	newPos.Z= TMath::randomBetweenMinMax(minEdgeExtended.X, maxEdgeExtended.X);
 	newPos.Y = TGame::world()->terrain()->getHeight(newPos.X,newPos.Y);
 	mTank->setPosition(newPos);
+
+	mHp = TMath::randomBetweenMinMax(TConfig::MISSILE_HP_DOWN,TConfig::MISSILE_HP_UP);
 }
 
 void TEnemyTank::setTankAnimator(io::path animFile, io::path textureFile)

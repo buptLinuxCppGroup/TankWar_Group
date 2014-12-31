@@ -1,9 +1,9 @@
-#include "TGame.h"
 #include "TEvent.h"
 #include "TMath.h"
 #include "THelp.h"
 #include "TConfig.h"
 #include "TBloodBar.h"
+#include "TGame.h"
 #include <iostream>
 using namespace std;
 scene::ISceneManager* TGame::mSmgr = NULL;
@@ -32,6 +32,8 @@ TPlayerTank * TGame::player()
 	return mPlayer;
 }
 
+
+
 TWorld * TGame::world()
 {
 	return mWorld;
@@ -46,6 +48,8 @@ void TGame::getPlayer(TPlayerTank * tplayer)
 {
 	mPlayer = tplayer;
 }
+
+	
 
 void TGame::init()
 {

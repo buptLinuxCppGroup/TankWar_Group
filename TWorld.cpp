@@ -86,7 +86,7 @@ void TWorld::addGrass(s32 size, path phMap, path pgrassCol, path pgrassMap, path
 			mGrass[x*size + z]->setMaterialTexture(0, tex1);
 			mGrass[x*size + z]->setMaterialFlag(video::EMF_BACK_FACE_CULLING, true);	
 			mGrass[x*size + z]->setDrawDistance(10000);
-			mGrass[x*size + z]->setMaxDensity(1000);
+			mGrass[x*size + z]->setMaxDensity(100);
 			mGrass[x*size + z]->drop();
 		}
 	}

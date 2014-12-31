@@ -1,7 +1,7 @@
 #include "TMath.h"
 #include <iostream>
 
-
+#define DOU(x) (x)*(x)
 
 /*template <typename T>
 T TMath::plusTwoVec3(const T s1, const T s2)
@@ -35,6 +35,11 @@ core::vector3df TMath::minusTwoVec3(const core::vector3df s1, const core::vector
 void TMath::printV3df(const core::vector3df s)
 {
 	std::cerr << s.X << ' ' << s.Y << ' ' << s.Z << std::endl;
+}
+
+double TMath::getDistance(const core::vector3df d1, const core::vector3df d2)
+{
+	return sqrt(DOU(d1.X-d2.X) + DOU(d1.Y - d2.Y) + DOU(d1.Z - d2.Z));
 }
 
 core::vector3df TMath::dragScale(core::vector3df s,f32 fac)

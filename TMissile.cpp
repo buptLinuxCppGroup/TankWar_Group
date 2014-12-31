@@ -15,9 +15,9 @@ time_t TMissile::outTime(time_t ttime)
 	return mOutTime=ttime;
 }
 
-scene::IAnimatedMeshSceneNode * TMissile::missile()
+scene::ISceneNode* TMissile::missile()
 {
-	return mMissile;
+	return light2;
 }
 
 void TMissile::enimInit()

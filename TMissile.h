@@ -23,7 +23,7 @@ public:
 	TMissile(core::vector3df pos, core::vector3df direction);
 	time_t outTime();
 	time_t outTime(time_t ttime);
-	scene::IAnimatedMeshSceneNode* missile();
+	scene::ISceneNode* missile();
 	void setMissileAnimator(io::path animFile, io::path textureFile, core::vector3df pos);
 	void update();
 	void drop();

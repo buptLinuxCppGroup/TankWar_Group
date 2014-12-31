@@ -6,6 +6,7 @@
 #include "TEnemyTank.h"
 #include "TWorld.h"
 #include "TMath.h"
+#include <vector>
 using namespace std;
 using namespace irr;
 using namespace video;
@@ -43,9 +44,21 @@ int main() {
 	
 	
 
-	world.selector()->drop();
+	//world.selector()->drop();
+	TEnemyTank tmp;
+	TEnemyTank::enemy().push_back(tmp);
+	/*enemy.tank()->addAnimator(
+			TGame::smgr()->createCollisionResponseAnimator(
+			TGame::smgr()->createOctTreeTriangleSelector(player., 0), enemy.tank(), core::vector3df(600, 1200, 600),
+			core::vector3df(0.0f, -75.0f, 0.0f), core::vector3df(0, -400, 0)
+			)
+			);*/
+	
+	/*enemy.tank()->setMaterialFlag(video::EMF_WIREFRAME,
+			!enemy.tank()->getMaterial(0).Wireframe);
+	enemy.tank()->setMaterialFlag(video::EMF_POINTCLOUD, false);*/
 
-	TEnemyTank enemy;
+	
 
 	/////ÓÎÏ·ÔËÐÐ
 	TGame::run(&player);

@@ -232,7 +232,7 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 		//std::cerr << "cnm" << std::endl;
 		core::line3d<f32> ray;
 		ray.start = TGame::player()->camera()->getPosition();
-		ray.start.Y -= 1;
+		//ray.start.Y -= 1;
 		ray.end = ray.start + (TGame::player()->camera()->getTarget() - ray.start).normalize() * 5000.0f;
 		
 		if (TGame::player()->timePermites()) {
@@ -266,9 +266,10 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 		if (selectedSceneNode) {
 			std::cerr << "here" << std::endl;
 			TMath::printV3df(selectedSceneNode->getPosition());
+			//TGame::driver()->draw3DTriangle(hitTriangle, video::SColor(0, 255, 0, 0));
 		}
 		else {
-			;
+			std::cerr<<"蛤蛤没打中"<<endl;
 		}
 	}
 }
@@ -280,9 +281,6 @@ void TEvent::updateMissiles()
 	for (auto it = missileList.begin(); it != missileList.end();it++) {
 		auto missile = *it;
 		if (nowTime - missile.outTime() > TConfig::MISSILE_EXIST_TIME) {
-			cerr << nowTime << endl;
-			cerr << "dd" << endl;
-			cerr << missile.outTime() << endl;
 			missile.drop();
 			missileList.erase(it);
 			break;
@@ -293,8 +291,18 @@ void TEvent::updateMissiles()
 	}
 	//cerr << missileList.size() << endl;
 	for (auto& missile : missileList) {
+		if (!missile.missile()->isVisible()) continue;
 		missile.update();
+		auto enemyList = TEnemyTank::enemy();
+		for (auto& enemyTank : enemyList) {
+			if (TMath::getDistance(missile.missile()->getPosition(), enemyTank.tank()->getPosition()) < TConfig::MISSILE_TANK_DISTANCE) {
+				cerr << "hahahaha,打中了" << endl;
+				missile.missile()->setVisible(false);
+				break;
+			}
+		}
 	}
+	
 }
 
 void TEvent::print_objApos_Minus_objBpos(scene::ISceneNode * a, scene::ISceneNode * b)

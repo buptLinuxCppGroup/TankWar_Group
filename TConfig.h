@@ -22,6 +22,9 @@ public:
 	static int MISSILE_INTERVAL_TIME;
 	static int MISSILE_EXIST_TIME;
 
+	//设置导弹与敌方坦克的命中距离
+	const static int MISSILE_TANK_DISTANCE = 400;
+
 	static core::vector3df TANK_INIT_ROTATION;
 	static core::vector3df getTANKpos_MINUS_CAMERApos();
 

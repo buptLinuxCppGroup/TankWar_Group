@@ -47,8 +47,9 @@ int main() {
 	
 
 	//world.selector()->drop();
-	TEnemyTank tmp;
-	TEnemyTank::enemy().push_back(tmp);
+	TEnemyTank tmp[10];
+	for (int i = 0; i < 10;i++)
+		TEnemyTank::enemy().push_back(tmp[i]);
 	/*enemy.tank()->addAnimator(
 			TGame::smgr()->createCollisionResponseAnimator(
 			TGame::smgr()->createOctTreeTriangleSelector(player., 0), enemy.tank(), core::vector3df(600, 1200, 600),
@@ -61,9 +62,6 @@ int main() {
 	enemy.tank()->setMaterialFlag(video::EMF_POINTCLOUD, false);*/
 
 	
-	TFire fireit;
-	fireit.setPos(core::vector3df(2022.73 ,688.015 ,1845.46));
-	fireit.startFire();
 	/////”Œœ∑‘À––
 	TGame::run(&player);
 	TGame::drop();

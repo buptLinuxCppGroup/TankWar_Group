@@ -4,7 +4,7 @@
 
 TFire::TFire()
 {
-	minRate = 80;
+	/*minRate = 80;
 	maxRate = 100;
 	minLife = 800;
 	maxLife = 1000;
@@ -13,6 +13,33 @@ TFire::TFire()
 	texturePath = "../../media/fire.bmp";
 	pos = vector3df(0,0,0);
 	scale = vector3df(2,2,2);
+	isFireNow = false;*/
+	minRate = 80;
+	maxRate = 100;
+	minLife = 240;
+	maxLife = 300;
+	minSize = dimension2df(60.f, 60.f);
+	maxSize = dimension2df(120.f, 120.f);
+	texturePath = "../../media/fire.bmp";
+	pos = vector3df(0, 0, 0);
+	scale = vector3df(20, 20, 20);
+	isFireNow = false;
+	ps =TGame::smgr()->addParticleSystemSceneNode(false);
+}
+
+core::dimension2df TFire::getMinSize()
+{
+	return minSize;
+}
+
+core::dimension2df TFire::getMaxSize()
+{
+	return maxSize;
+}
+
+bool TFire::fireNow()
+{
+	return isFireNow;
 }
 
 void TFire::setRateRange(int tmin, int tmax)
@@ -50,34 +77,105 @@ void TFire::setScale(vector3df tscale)
 
 void TFire::startFire()
 {
-	scene::IParticleSystemSceneNode* ps =
-		TGame::smgr()->addParticleSystemSceneNode(false);
+	ps->setVisible(true);
+	if (isFireNow) {
+		return;
+	}
+	else {
 
-	scene::IParticleEmitter* em = ps->createBoxEmitter(
-		core::aabbox3d<f32>(-7, 0, -7, 7, 1, 7), // emitter size
-		core::vector3df(0.0f, 0.06f, 0.0f),   // initial direction
-		minRate, maxRate,                             // emit rate
-		video::SColor(0, 255, 255, 255),       // darkest color
-		video::SColor(0, 255, 255, 255),       // brightest color
-		minLife, maxLife, 0,                         // min and max age, angle
-		minSize,         // min size
-		maxSize);        // max size
+		scene::IParticleEmitter* em = ps->createBoxEmitter(
+			core::aabbox3d<f32>(-7, 0, -7, 7, 1, 7), // emitter size
+			core::vector3df(0.0f, 0.06f, 0.0f),   // initial direction
+			minRate, maxRate,                             // emit rate
+			video::SColor(0, 255, 255, 255),       // darkest color
+			video::SColor(0, 255, 255, 255),       // brightest color
+			minLife, maxLife, 0,                         // min and max age, angle
+			minSize,         // min size
+			maxSize);        // max size
 
-	ps->setEmitter(em); // this grabs the emitter
-	em->drop(); // so we can drop it here without deleting it
+		ps->setEmitter(em); // this grabs the emitter
+		em->drop(); // so we can drop it here without deleting it
 
-	scene::IParticleAffector* paf = ps->createFadeOutParticleAffector();
+		scene::IParticleAffector* paf = ps->createFadeOutParticleAffector();
 
-	ps->addAffector(paf); // same goes for the affector
-	paf->drop();
+		ps->addAffector(paf); // same goes for the affector
+		paf->drop();
 
-	ps->setPosition(pos);
-	ps->setScale(scale);
-	ps->setMaterialFlag(video::EMF_LIGHTING, false);
-	ps->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
-	ps->setMaterialTexture(0, TGame::driver()->getTexture(texturePath));
-	ps->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
+		ps->setPosition(pos);
+		ps->setScale(scale);
+		ps->setMaterialFlag(video::EMF_LIGHTING, false);
+		ps->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
+		ps->setMaterialTexture(0, TGame::driver()->getTexture(texturePath));
+		ps->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
+		
+		isFireNow = true;
+	}
+}
 
+void TFire::stopFire()
+{
+	//ps->setVisible(false);
+	//ps->setPosition(core::vector3df(0,0,0));
+	isFireNow = false;
+}
+
+void TFire::resetFire()
+{
+	minRate = 80;
+	maxRate = 100;
+	minLife = 800;
+	maxLife = 1000;
+	minSize = dimension2df(10.f, 10.f);
+	maxSize = dimension2df(20.f, 20.f);
+	texturePath = "../../media/fire.bmp";
+	pos = vector3df(0, 0, 0);
+	scale = vector3df(2, 2, 2);
+	stopFire();
+}
+
+void TFire::setSmallFire(vector3df tpos)
+{
+	
+	minRate = 80;
+	maxRate = 100;
+	minLife = 800;
+	maxLife = 2000;
+	minSize = dimension2df(60.f, 60.f);
+	maxSize = dimension2df(120.f, 120.f);
+	texturePath = "../../media/fire.bmp";
+	pos = tpos;
+	scale = vector3df(20, 80, 20);
+	isFireNow = false;
+}
+
+void TFire::setMiddleFire(vector3df tpos)
+{
+	
+	minRate = 60;
+	maxRate = 100;
+	minLife = 800;
+	maxLife = 2000;
+	minSize = dimension2df(80.f, 80.f);
+	maxSize = dimension2df(160.f, 160.f);
+	texturePath = "../../media/fire.bmp";
+	pos = tpos;
+	scale = vector3df(40, 200, 40);
+	isFireNow = false;
+}
+
+void TFire::setBigFire(vector3df tpos)
+{
+	
+	minRate = 60;
+	maxRate = 100;
+	minLife = 800;
+	maxLife = 2000;
+	minSize = dimension2df(100.f, 100.f);
+	maxSize = dimension2df(180.f, 180.f);
+	texturePath = "../../media/fire.bmp";
+	pos = tpos;
+	scale = vector3df(55, 360, 55);
+	isFireNow = false;
 }
 
 

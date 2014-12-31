@@ -1,6 +1,7 @@
 #include "TEvent.h"
 #include "TPlayerTank.h"
 #include "TMath.h"
+#include "TEnemyTank.h"
 #include "TConfig.h"
 #include <iostream>
 using namespace std;
@@ -307,6 +308,7 @@ void TEvent::updateMissiles()
 		if (!missile.missile()->isVisible()) continue;
 		missile.update();
 		auto missilePos = missile.missile()->getPosition();
+		//与地形的碰撞检测
 		if (std::abs(missilePos.Y - TGame::world()->terrain()->getHeight(missilePos.X, missilePos.Y))<5) {
 			missile.missile()->setVisible(false);
 			continue;
@@ -315,19 +317,33 @@ void TEvent::updateMissiles()
 		auto& enemyList = TEnemyTank::enemy();
 		for (auto it = enemyList.begin(); it != enemyList.end();it++) {
 			TEnemyTank& enemyTank= *it;
-			if (!enemyTank.tank()->isVisible()) continue;
+
 			auto enemyPos = enemyTank.tank()->getPosition();
 			if (
 				 std::abs(missilePos.X-enemyPos.X)<500
 				&& std::abs(missilePos.Z- enemyPos.Z)<500
 				&& std::abs(missilePos.Y- enemyPos.Y)<280
 				) {
-				enemyTank.beAttacked();
-				if (enemyTank.hp() < 0) {
-					enemyTank.reInit();
+				if (!enemyTank.died()) {
+					enemyTank.beAttacked();
 				}
+
 				missile.missile()->setVisible(false);
 				break;
+			}
+		}
+	}
+
+	auto& enemyList = TEnemyTank::enemy();
+	for (auto it = enemyList.begin(); it != enemyList.end(); it++) {
+		TEnemyTank& enemyTank = *it;
+
+		
+		enemyTank.checkIfFire();
+
+		if (enemyTank.died()) {
+			if (TMath::getNowTime() - enemyTank.diedTime() > TConfig::TANK_DIED_EXISTTIME) {
+				enemyTank.reInit();
 			}
 		}
 	}

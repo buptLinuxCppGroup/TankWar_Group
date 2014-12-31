@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <ctime>
 #include <irrlicht.h>
 using namespace irr;
 class TConfig
@@ -30,23 +31,29 @@ public:
 	const static int MISSILE_TANK_DISTANCE = 400;
 
 	//炮弹伤害
-	const static int MISSILE_DAMAGE1 = 700;
+	static int MISSILE_DAMAGE1;
 	const static int MISSILE_DAMAGE_AROUND = 400;
 
 	//炮弹载入种类
 	static int MISSILE_KIND;
 
 	//坦克血上限下限
-	const static int MISSILE_HP_UP = 3000;
-	const static int MISSILE_HP_DOWN = 1000;
+	const static int MISSILE_HP_UP = 8000;
+	const static int MISSILE_HP_DOWN = 5000;
 
 	//坦克初始旋转角度
 	static core::vector3df TANK_INIT_ROTATION;
 
+	//坦克死亡存在时间
+	static time_t TANK_DIED_EXISTTIME;
 	//没用的
 	static core::vector3df getTANKpos_MINUS_CAMERApos();
 
-	
+	//火与坦克中心距离
+	const static int FIRE_TANK_CENTER_DIS_X = 150;
+	const static int FIRE_TANK_CENTER_DIS_Z = 250;
+	const static int FIRE_TANK_CENTER_DIS_Y = 200;
+	const static core::vector3df FIRE_TANK_CENTER_DIS;
 
 	static core::vector3df st ;
 	static core::vector3df ed ;

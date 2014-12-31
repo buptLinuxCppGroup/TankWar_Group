@@ -23,9 +23,14 @@ f32 TConfig::MISSILE_SPEED = 10.0;
 double TConfig::MISSILE_INTERVAL_TIME = 1;
 int TConfig::MISSILE_EXIST_TIME = 10;
 
+int TConfig::MISSILE_DAMAGE1 = 700;
 
 core::vector3df TConfig::st = core::vector3df(2341.42, 349.962, 1969.35);
 core::vector3df TConfig::ed = core::vector3df(1610.4, 1435.141, 2132.17);
+
+time_t TConfig::TANK_DIED_EXISTTIME = 3;
+
+const core::vector3df TConfig::FIRE_TANK_CENTER_DIS=core::vector3df(150,0,250);
 
 core::vector3df TConfig::getTANKpos_MINUS_CAMERApos()
 {

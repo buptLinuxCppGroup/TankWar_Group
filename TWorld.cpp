@@ -61,14 +61,14 @@ void TWorld::addTree2(io::path file, io::path file2, int count , TPlayerTank* pl
 		
 		
 
-		auto* select = TGame::smgr()->createOctreeTriangleSelector(mTrees2[i]->getMesh(), mTrees2[i],128);
-		mTrees2[i]->setTriangleSelector(select);
-		select->drop();
+		//auto* select = TGame::smgr()->createOctreeTriangleSelector(mTrees2[i]->getMesh(), mTrees2[i],128);
+		//mTrees2[i]->setTriangleSelector(select);
+		//select->drop();
 
 		//auto node= TGame::smgr()->addOctreeSceneNode(player->tank()->getMesh());
-		auto* tmp=TGame::smgr()->createCollisionResponseAnimator(mTrees2[i]->getTriangleSelector(),player->camera(), mTrees2[i]->getScale() , core::vector3df(0.0f, 0.0f, 0.0f), core::vector3df(0, -400, 0));
-		player->camera()->addAnimator(tmp);
-		tmp->drop();
+		//auto* tmp=TGame::smgr()->createCollisionResponseAnimator(mTrees2[i]->getTriangleSelector(),player->camera(), mTrees2[i]->getScale() , core::vector3df(0.0f, 0.0f, 0.0f), core::vector3df(0, -400, 0));
+		//player->camera()->addAnimator(tmp);
+		//tmp->drop();
 	}
 }
 

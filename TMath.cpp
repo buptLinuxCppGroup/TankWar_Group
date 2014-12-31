@@ -42,6 +42,11 @@ double TMath::getDistance(const core::vector3df d1, const core::vector3df d2)
 	return sqrt(DOU(d1.X-d2.X) + DOU(d1.Y - d2.Y) + DOU(d1.Z - d2.Z));
 }
 
+time_t TMath::getNowTime()
+{
+	return time(NULL);
+}
+
 core::vector3df TMath::dragScale(core::vector3df s,f32 fac)
 {
 	core::vector3df res = s;

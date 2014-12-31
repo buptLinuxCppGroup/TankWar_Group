@@ -68,16 +68,20 @@ void TPlayerTank::setTankAnimator(io::path animFile,io::path textureFile)
 	scene::IAnimatedMesh* mesh = TGame::smgr()->getMesh(animFile);
 	mTank = TGame::smgr()->addAnimatedMeshSceneNode(mesh);
 	mTank->setMaterialFlag(video::EMF_LIGHTING,false);
-	mTank->setMD2Animation(scene::EMAT_CROUCH_ATTACK);
 	mTank->setMaterialTexture(0,TGame::driver()->getTexture(textureFile));
-	mTank->setRotation(TConfig::TANK_INIT_ROTATION);
+	//mTank->setRotation(TConfig::TANK_INIT_ROTATION);
 
 	//auto tmpPos = mCamera->getPosition();
 	//tmpPos.Y = TGame::world()->terrain()->getHeight(tmpPos.X,tmpPos.Z);
 
-	mTank->setPosition(core::vector3df(-33.5,-197.7,94.2));
+	//mTank->setPosition(core::vector3df(-33.5,-197.7,94.2));
+	core::vector3df positionOffset = core::vector3df(-1.5f, 3.5f, -2.5f);
+	core::vector3df rotationOffset = core::vector3df(0.0f, -90.0f, -4.0f);
+
+	mTank->setPosition(positionOffset);
+	mTank->setRotation(rotationOffset);
 	mTank->setParent(mCamera);
-	mTank->setScale(TMath::dragScale(mTank->getScale(),1));
+	mTank->setMD2Animation("idle");
 
 }
 
@@ -109,7 +113,7 @@ TPlayerTank::TPlayerTank()
 	mCamera->setPosition(core::vector3df(2341.5f,350.0f,1969.2f));
 	
 	//set tank animator
-	setTankAnimator(TConfig::TANK_3D_MESH_DIR.c_str(), TConfig::TANK_3D_TEXTURE_DIR.c_str());
+	setTankAnimator(TConfig::GUN1_3D_MESH_DIR.c_str(), TConfig::GUN1_3D_TEXTURE_DIR.c_str());
 
 	mLeftClick = false;
 	mCollMan = TGame::smgr()->getSceneCollisionManager();

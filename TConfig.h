@@ -11,7 +11,11 @@ public:
 	static std::string TANK_3D_MESH_DIR;
 	static std::string TANK_3D_TEXTURE_DIR;
 
-	//坦克mesh和texture路径
+	//枪mesh和texture路径
+	static std::string GUN1_3D_MESH_DIR;
+	static std::string GUN1_3D_TEXTURE_DIR;
+
+	//导弹mesh和texture路径
 	static std::string MISSILE_3D_MESH_DIR;
 	static std::string MISSILE_3D_TEXTURE_DIR;
 
@@ -19,7 +23,7 @@ public:
 	static f32 MISSILE_SPEED;
 
 	//导弹发射间隔时间和导弹存在时间
-	static int MISSILE_INTERVAL_TIME;
+	static double MISSILE_INTERVAL_TIME;
 	static int MISSILE_EXIST_TIME;
 
 	//设置导弹与敌方坦克的命中距离

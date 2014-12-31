@@ -105,7 +105,7 @@ void TGame::run(TPlayerTank * player)
 			///äÖÈ¾²¿·Ö
 			mDriver->beginScene(true, true, video::SColor(255, 200, 200, 200));
 
-
+			
 			//TGame::driver()->draw3DLine(st, ed, video::SColor(255, 0, 0, 0));
 
 			event->setStEd(TConfig::st, TConfig::ed);
@@ -118,6 +118,7 @@ void TGame::run(TPlayerTank * player)
 
 			mSmgr->drawAll();
 
+			TGame::world()->loadCrossHair();
 			event->updateMissiles();
 			//TBloodBar::TBloodBar(mDevice, mDriver, 100);
 

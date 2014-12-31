@@ -19,6 +19,17 @@ scene::ILightSceneNode * TWorld::light()
 	return mLight;
 }
 
+void TWorld::loadCrossHair()
+{
+	auto mCrosshair= TGame::driver()->getTexture("./data/gun/crosshair.png");
+	auto mColors = video::SColor(200, 200, 0, 0);
+	s32 mCrosshairSize = 25;
+	s32 rw = 1024;
+	s32 rh = 768;
+	TGame::driver()->draw2DImage(mCrosshair, rect<s32>(rw / 2 - mCrosshairSize, rh / 2 - mCrosshairSize, rw / 2 + mCrosshairSize, rh / 2 + mCrosshairSize), rect<s32>(0, 0, mCrosshair->getOriginalSize().Width, mCrosshair->getOriginalSize().Height),(rect<s32>*)0, &mColors, true);
+	//TGame::driver()->draw2DImage()
+}
+
 CGrassPatchSceneNode ** TWorld::grassNode()
 {
 	return NULL;

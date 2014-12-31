@@ -39,6 +39,8 @@ public:
 	scene::ITriangleSelector* selector();
 	scene::ILightSceneNode* light();
 
+	void loadCrossHair();
+
 	void skybox(path top, path bottom, path left, path right, path front, path back);
 	ISceneNode* skybox();
 	void skydome(path file, u32 horiRes = 816U, u32 vertRes = 8U, f32 texturePercentage = 0.95f, f32 spherePercentage = 2.0f, f32 radius = 1000.f);

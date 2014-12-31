@@ -25,14 +25,20 @@ void TMissile::enimInit()
 	switch (TConfig::MISSILE_KIND)
 	{
 	case 1: {
+		TConfig::MISSILE_INTERVAL_TIME = 1.0;
+		TConfig::MISSILE_SPEED = 5;
 		missileKind1();
 		break;
 	}
 	case 2: {
+		TConfig::MISSILE_INTERVAL_TIME = 1.0;
+		TConfig::MISSILE_SPEED = 7;
 		missileKind2();
 		break;
 	}
 	case 3: {
+		TConfig::MISSILE_INTERVAL_TIME = 0.0;
+		TConfig::MISSILE_SPEED = 10.0;
 		missileKind3();
 		break;
 	}

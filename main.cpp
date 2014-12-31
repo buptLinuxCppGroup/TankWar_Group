@@ -30,7 +30,8 @@ int main() {
 	//world.skybox("./data/terrain/sky/irrlicht2_up.jpg","./data/terrain/sky/irrlicht2_dn.jpg","./data/terrain/sky/irrlicht2_lf.jpg","./data/terrain/sky/irrlicht2_rt.jpg","./data/terrain/sky/irrlicht2_ft.jpg", "./data/terrain/sky/irrlicht2_bk.jpg");
 	world.skydome("./data/terrain/sky/skydome.jpg", 16, 8, 0.95f, 2.0f);	
 	TGame::driver()->setTextureCreationFlag(video::ETCF_CREATE_MIP_MAPS, true);
-	
+	world.loadCrossHair();//¼Ó×¼ÐÇ
+
 	player.camera()->setFarValue(10000);
 	
 	player.setAnimator(

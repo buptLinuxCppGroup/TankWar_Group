@@ -243,6 +243,9 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 {
 	if (TGame::player()->leftClick()) {
 		//std::cerr << "cnm" << std::endl;
+
+		TGame::player()->tank()->setMD2Animation("pow");
+
 		core::line3d<f32> ray;
 		ray.start = TGame::player()->camera()->getPosition();
 		//ray.start.Y -= 1;
@@ -270,14 +273,17 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 		//std::cerr << "look:" << std::endl;
 		//TMath::printV3df(intersection);
 
-		if (selectedSceneNode) {
-			//std::cerr << "here" << std::endl;
-			TMath::printV3df(selectedSceneNode->getPosition());
-			//TGame::driver()->draw3DTriangle(hitTriangle, video::SColor(0, 255, 0, 0));
-		}
-		else {
-			//std::cerr<<"蛤蛤没打中"<<endl;
-		}
+		//if (selectedSceneNode) {
+		//	//std::cerr << "here" << std::endl;
+		//	TMath::printV3df(selectedSceneNode->getPosition());
+		//	//TGame::driver()->draw3DTriangle(hitTriangle, video::SColor(0, 255, 0, 0));
+		//}
+		//else {
+		//	//std::cerr<<"蛤蛤没打中"<<endl;
+		//}
+	}
+	else {
+		TGame::player()->tank()->setMD2Animation("idle");
 	}
 }
 
@@ -309,7 +315,6 @@ void TEvent::updateMissiles()
 		auto& enemyList = TEnemyTank::enemy();
 		for (auto it = enemyList.begin(); it != enemyList.end();it++) {
 			TEnemyTank& enemyTank= *it;
-			cerr << enemyTank.hp() << endl;
 			if (!enemyTank.tank()->isVisible()) continue;
 			auto enemyPos = enemyTank.tank()->getPosition();
 			if (
@@ -318,7 +323,6 @@ void TEvent::updateMissiles()
 				&& std::abs(missilePos.Y- enemyPos.Y)<280
 				) {
 				enemyTank.beAttacked();
-				cerr << enemyTank.hp() << endl;
 				if (enemyTank.hp() < 0) {
 					enemyTank.reInit();
 				}

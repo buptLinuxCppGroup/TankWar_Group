@@ -31,11 +31,11 @@ void TEnemyTank::checkIfFire()
 		mFire.setSmallFire(firePos);
 		mFire.startFire();
 	}
-	else if (mHp*1.0 / fullHp < 0.6) {
+	if (mHp*1.0 / fullHp < 0.6) {
 		mFire.setMiddleFire(firePos);
 		mFire.startFire();
 	}
-	else if (mHp*1.0 / fullHp < 0.3) {
+	if (mHp*1.0 / fullHp < 0.3) {
 		mFire.setBigFire(firePos);
 		mFire.startFire();
 	}
@@ -89,6 +89,11 @@ void TEnemyTank::reInit()
 	
 	mDied = false;
 	mDiedTime = 0;
+
+	mFire.stopFire();
+
+	TGame::player()->scorePlus(TConfig::TANK_SCORE);
+	cerr << "当前得分:" << TGame::player()->score() << endl;
 }
 
 void TEnemyTank::setTankAnimator(io::path animFile, io::path textureFile)

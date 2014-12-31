@@ -114,7 +114,7 @@ void TFire::startFire()
 
 void TFire::stopFire()
 {
-	//ps->setVisible(false);
+	ps->setVisible(false);
 	//ps->setPosition(core::vector3df(0,0,0));
 	isFireNow = false;
 }
@@ -122,7 +122,7 @@ void TFire::stopFire()
 void TFire::resetFire()
 {
 	minRate = 80;
-	maxRate = 100;
+	maxRate = 80;
 	minLife = 800;
 	maxLife = 1000;
 	minSize = dimension2df(10.f, 10.f);
@@ -137,7 +137,7 @@ void TFire::setSmallFire(vector3df tpos)
 {
 	
 	minRate = 80;
-	maxRate = 100;
+	maxRate = 80;
 	minLife = 800;
 	maxLife = 2000;
 	minSize = dimension2df(60.f, 60.f);
@@ -151,8 +151,8 @@ void TFire::setSmallFire(vector3df tpos)
 void TFire::setMiddleFire(vector3df tpos)
 {
 	
-	minRate = 60;
-	maxRate = 100;
+	minRate = 80;
+	maxRate = 80;
 	minLife = 800;
 	maxLife = 2000;
 	minSize = dimension2df(80.f, 80.f);
@@ -166,15 +166,15 @@ void TFire::setMiddleFire(vector3df tpos)
 void TFire::setBigFire(vector3df tpos)
 {
 	
-	minRate = 60;
-	maxRate = 100;
+	minRate = 80;
+	maxRate = 80;
 	minLife = 800;
 	maxLife = 2000;
-	minSize = dimension2df(100.f, 100.f);
-	maxSize = dimension2df(180.f, 180.f);
+	minSize = dimension2df(300.f, 300.f);
+	maxSize = dimension2df(500.f, 500.f);
 	texturePath = "../../media/fire.bmp";
 	pos = tpos;
-	scale = vector3df(55, 360, 55);
+	scale = vector3df(80, 550, 80);
 	isFireNow = false;
 }
 

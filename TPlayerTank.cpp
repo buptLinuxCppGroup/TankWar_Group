@@ -19,6 +19,21 @@ void TPlayerTank::leftClick(bool tclick)
 	mLeftClick = tclick;
 }
 
+int TPlayerTank::score()
+{
+	return mScore;
+}
+
+void TPlayerTank::score(int s)
+{
+	mScore = s;
+}
+
+void TPlayerTank::scorePlus(int s)
+{
+	mScore += s;
+}
+
 bool TPlayerTank::timePermites()
 {
 	time_t nowTime;
@@ -119,6 +134,8 @@ TPlayerTank::TPlayerTank()
 	mCollMan = TGame::smgr()->getSceneCollisionManager();
 
 	mLastMissileTime = 0;
+
+	mScore = 0;
 }
 
 

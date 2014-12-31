@@ -55,6 +55,10 @@ public:
 	const static int FIRE_TANK_CENTER_DIS_Y = 200;
 	const static core::vector3df FIRE_TANK_CENTER_DIS;
 
+
+	//击杀单个坦克得分
+	const static int TANK_SCORE = 100;
+
 	static core::vector3df st ;
 	static core::vector3df ed ;
 	TConfig();

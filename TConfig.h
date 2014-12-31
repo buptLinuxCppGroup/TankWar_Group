@@ -25,6 +25,14 @@ public:
 	//设置导弹与敌方坦克的命中距离
 	const static int MISSILE_TANK_DISTANCE = 400;
 
+	//炮弹伤害
+	const static int MISSILE_DAMAGE1 = 700;
+	const static int MISSILE_DAMAGE_AROUND = 400;
+
+	//坦克血上限下限
+	const static int MISSILE_HP_UP = 3000;
+	const static int MISSILE_HP_DOWN = 1000;
+
 	static core::vector3df TANK_INIT_ROTATION;
 	static core::vector3df getTANKpos_MINUS_CAMERApos();
 

@@ -295,8 +295,14 @@ void TEvent::updateMissiles()
 		missile.update();
 		auto enemyList = TEnemyTank::enemy();
 		for (auto& enemyTank : enemyList) {
+			cerr << enemyTank.hp() << endl;
+			if (!enemyTank.tank()->isVisible()) continue;
 			if (TMath::getDistance(missile.missile()->getPosition(), enemyTank.tank()->getPosition()) < TConfig::MISSILE_TANK_DISTANCE) {
-				cerr << "hahahaha,´òÖÐÁË" << endl;
+				enemyTank.beAttacked();
+				cerr << enemyTank.hp() << endl;
+				if (enemyTank.hp() < 0) {
+					enemyTank.reInit();
+				}
 				missile.missile()->setVisible(false);
 				break;
 			}

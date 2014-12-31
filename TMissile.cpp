@@ -52,7 +52,7 @@ void TMissile::enimInit()
 		video::SColor(10, 255, 255, 255), video::SColor(10, 255, 255, 255),
 		400, 1100);
 	em->setMinStartSize(core::dimension2d<f32>(30.0f, 40.0f));
-	em->setMaxStartSize(core::dimension2d<f32>(30.0f, 40.0f));
+	em->setMaxStartSize(core::dimension2d<f32>(300.0f, 400.0f));
 
 	ps->setEmitter(em);
 	em->drop();
@@ -65,8 +65,8 @@ void TMissile::enimInit()
 	// adjust some material settings
 	ps->setMaterialFlag(video::EMF_LIGHTING, false);
 	ps->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
-	//ps->setMaterialTexture(0, driver->getTexture("../../media/fireball.bmp"));
-	ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/portal2.bmp"));
+	ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/fireball.bmp"));
+	//ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/portal2.bmp"));
 	ps->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
 }
 

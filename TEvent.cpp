@@ -293,12 +293,23 @@ void TEvent::updateMissiles()
 	for (auto& missile : missileList) {
 		if (!missile.missile()->isVisible()) continue;
 		missile.update();
+		auto missilePos = missile.missile()->getPosition();
+		if (std::abs(missilePos.Y - TGame::world()->terrain()->getHeight(missilePos.X, missilePos.Y))<5) {
+			missile.missile()->setVisible(false);
+			continue;
+		}
+
 		auto& enemyList = TEnemyTank::enemy();
 		for (auto it = enemyList.begin(); it != enemyList.end();it++) {
 			TEnemyTank& enemyTank= *it;
 			cerr << enemyTank.hp() << endl;
 			if (!enemyTank.tank()->isVisible()) continue;
-			if (TMath::getDistance(missile.missile()->getPosition(), enemyTank.tank()->getPosition()) < TConfig::MISSILE_TANK_DISTANCE) {
+			auto enemyPos = enemyTank.tank()->getPosition();
+			if (
+				 std::abs(missilePos.X-enemyPos.X)<500
+				&& std::abs(missilePos.Z- enemyPos.Z)<500
+				&& std::abs(missilePos.Y- enemyPos.Y)<280
+				) {
 				enemyTank.beAttacked();
 				cerr << enemyTank.hp() << endl;
 				if (enemyTank.hp() < 0) {

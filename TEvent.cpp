@@ -53,6 +53,19 @@ bool TEvent::isKeyUp(EKEY_CODE keyCode) const
 	return !keyDown[keyCode];
 }
 
+void TEvent::changeMissileKind()
+{
+	if (isKeyDown(KEY_KEY_1)) {
+		TConfig::MISSILE_KIND = 1;
+	}
+	else if (isKeyDown(KEY_KEY_2)) {
+		TConfig::MISSILE_KIND = 2;
+	}
+	else if (isKeyDown(KEY_KEY_3)) {
+		TConfig::MISSILE_KIND = 3;
+	}
+}
+
 
 
 void TEvent::getRightRotation()
@@ -236,19 +249,13 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 		ray.end = ray.start + (TGame::player()->camera()->getTarget() - ray.start).normalize() * 5000.0f;
 		
 		if (TGame::player()->timePermites()) {
-			cerr << "permit" << endl;//Ok,能正常识别时间，每隔3秒允许
+			//cerr << "permit" << endl;//Ok,能正常识别时间，每隔3秒允许
 			TGame::player()->missileQueue().push_back(TMissile(TGame::player()->camera()->getPosition(), (TGame::player()->camera()->getTarget() - ray.start).normalize()));
-			cerr << TGame::player()->missileQueue().size() << endl;
+			//cerr << TGame::player()->missileQueue().size() << endl;
 		}
 
-		//TGame::driver()->draw3DLine(st, ed, video::SColor(255, 0, 0, 0));
-		//TGame::driver()->draw3DLine(ray.start, st,video::SColor(255,0,0,0));
 		TGame::driver()->draw3DLine(ray.start, ray.end, video::SColor(255, 0, 0, 0));
 
-		if (isKeyDown(KEY_KEY_Z)) {
-			std::cerr << "her" << std::endl;
-			TMath::printV3df(ray.start);
-		}
 
 		core::vector3df intersection;
 		core::triangle3df hitTriangle;
@@ -264,12 +271,12 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 		//TMath::printV3df(intersection);
 
 		if (selectedSceneNode) {
-			std::cerr << "here" << std::endl;
+			//std::cerr << "here" << std::endl;
 			TMath::printV3df(selectedSceneNode->getPosition());
 			//TGame::driver()->draw3DTriangle(hitTriangle, video::SColor(0, 255, 0, 0));
 		}
 		else {
-			std::cerr<<"蛤蛤没打中"<<endl;
+			//std::cerr<<"蛤蛤没打中"<<endl;
 		}
 	}
 }

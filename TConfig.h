@@ -29,6 +29,9 @@ public:
 	const static int MISSILE_DAMAGE1 = 700;
 	const static int MISSILE_DAMAGE_AROUND = 400;
 
+	//炮弹载入种类
+	static int MISSILE_KIND;
+
 	//坦克血上限下限
 	const static int MISSILE_HP_UP = 3000;
 	const static int MISSILE_HP_DOWN = 1000;
@@ -38,6 +41,8 @@ public:
 
 	//没用的
 	static core::vector3df getTANKpos_MINUS_CAMERApos();
+
+	
 
 	static core::vector3df st ;
 	static core::vector3df ed ;

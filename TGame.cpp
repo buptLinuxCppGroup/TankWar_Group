@@ -84,6 +84,7 @@ void TGame::run(TPlayerTank * player)
 						//event->getRightPosition();
 
 			event->showInfo();
+			event->changeMissileKind();
 			//event->moveTankPos();
 			//event->moveTankRotation();
 			//event->correctY();

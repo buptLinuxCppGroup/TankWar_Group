@@ -188,7 +188,7 @@ void TEvent::showInfo()
 		//TInfo::showTankPos();
 		//TInfo::showWorldScale();
 		//TInfo::showCameraTarget();
-		TMath::printV3df(TConfig::st);
+		//TMath::printV3df(TConfig::st);
 	}
 }
 

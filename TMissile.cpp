@@ -38,7 +38,7 @@ void TMissile::enimInit()
 	}
 	case 3: {
 		TConfig::MISSILE_INTERVAL_TIME = 0.0;
-		TConfig::MISSILE_SPEED = 10.0;
+		TConfig::MISSILE_SPEED = 13.0;
 		missileKind3();
 		break;
 	}
@@ -165,7 +165,7 @@ void TMissile::missileKind3()
 	bill->setMaterialFlag(video::EMF_LIGHTING, false);
 	bill->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
 	bill->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
-	bill->setMaterialTexture(0, TGame::driver()->getTexture("../../media/particlegreen.jpg"));
+	bill->setMaterialTexture(0, TGame::driver()->getTexture("../../media/particlewhite.bmp"));
 
 	// add particle system
 	ps =
@@ -175,9 +175,9 @@ void TMissile::missileKind3()
 	em = ps->createBoxEmitter(
 		core::aabbox3d<f32>(-3, 0, -3, 3, 1, 3),
 		core::vector3df(0.0f, 0.03f, 0.0f),
-		80, 100,
+		240, 300,
 		video::SColor(10, 255, 255, 255), video::SColor(10, 255, 255, 255),
-		400, 1100);
+		333, 333);
 	em->setMinStartSize(core::dimension2d<f32>(10.0f, 12.0f));
 	em->setMaxStartSize(core::dimension2d<f32>(10.0f, 12.0f));
 
@@ -192,8 +192,8 @@ void TMissile::missileKind3()
 	// adjust some material settings
 	ps->setMaterialFlag(video::EMF_LIGHTING, false);
 	ps->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
-	ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/fireball.bmp"));
-	//ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/portal2.bmp"));
+	//ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/fireball.bmp"));
+	ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/particlewhite.bmp"));
 	ps->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
 }
 

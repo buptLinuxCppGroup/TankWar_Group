@@ -5,6 +5,7 @@
 #include "TPlayerTank.h"
 #include "TEnemyTank.h"
 #include "TWorld.h"
+#include "TFire.h"
 #include "TMath.h"
 #include <vector>
 using namespace std;
@@ -60,7 +61,9 @@ int main() {
 	enemy.tank()->setMaterialFlag(video::EMF_POINTCLOUD, false);*/
 
 	
-
+	TFire fireit;
+	fireit.setPos(core::vector3df(2022.73 ,688.015 ,1845.46));
+	fireit.startFire();
 	/////”Œœ∑‘À––
 	TGame::run(&player);
 	TGame::drop();

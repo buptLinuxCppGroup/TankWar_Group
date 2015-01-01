@@ -3,6 +3,7 @@
 #include "THelp.h"
 #include "TConfig.h"
 #include "TBloodBar.h"
+#include "TMark.h"
 #include "TGame.h"
 #include <iostream>
 using namespace std;
@@ -73,7 +74,7 @@ void TGame::drop()
 
 void TGame::run(TPlayerTank * player)
 {
-	int i = 0;
+	int i1 = 0, i2 = 0, i3 = 0;
 	TEvent* event = new TEvent(player);
 	TGame::device()->setEventReceiver(event);
 	if (mDevice->isWindowActive()) {
@@ -120,10 +121,21 @@ void TGame::run(TPlayerTank * player)
 
 			TGame::world()->loadCrossHair();
 			event->updateMissiles();
-			//TBloodBar::TBloodBar(mDevice, mDriver, 100);
-
-
-
+			TBloodBar B(mDevice, mDriver, i2);
+			i1 = TGame::player()->score();
+			TMark M(mDevice, mDriver, i1);
+			/*
+			scene::ISceneNode* bar1 = mSmgr->addLightSceneNode(0, core::vector3df(0, 0, 0), video::SColorf(1.0f, 0.0f, 0.0f, 0.0f), 800.0f);
+			bar1->setDebugDataVisible(scene::EDS_BBOX);
+			scene::ISceneNodeAnimator* anim = 0;
+			anim = mSmgr->createFlyCircleAnimator(core::vector3df(50, 300, 0), 190.0f, -0.003f);
+			bar1->addAnimator(anim);
+			anim->drop();
+			bar1 = mSmgr->addBillboardSceneNode(bar1, core::dimension2d<f32>(60, 60));
+			bar1->setMaterialFlag(video::EMF_LIGHTING, false);
+			bar1->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
+			bar1->setMaterialTexture(0, mDriver->getTexture("F:/linux/irrlicht-1.7.3/media/particlered.bmp"));
+			*/
 
 
 			mDriver->endScene();

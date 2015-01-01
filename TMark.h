@@ -6,5 +6,5 @@ class TMark
 {
 public:
 	TMark();
-	TMark(irr::IrrlichtDevice* mDevice, video::IVideoDriver* mDriver,int a);
+	TMark(irr::IrrlichtDevice* mDevice, video::IVideoDriver* mDriver, int a);
 };

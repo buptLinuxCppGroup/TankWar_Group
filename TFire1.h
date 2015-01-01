@@ -1,4 +1,18 @@
 #pragma once
+<<<<<<< HEAD
+#include"irrlicht.h"
+
+using namespace irr;
+class TFire{
+private:
+	double x1, y1, z1;
+
+public:
+	TFire();
+	TFire(IrrlichtDevice *device, scene::ISceneManager* smgr, video::IVideoDriver* mDriver, double x2, double y2, double z2);
+	void set(double x2, double y2, double z2);
+};
+=======
 #include <irrlicht.h>
 #include "TGame.h"
 #include <ctime>
@@ -37,3 +51,4 @@ public:
 ~TFire();
 };
 
+>>>>>>> c374e2dda2842502f0d47f20de3cd24c69857ce6

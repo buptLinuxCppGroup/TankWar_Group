@@ -17,6 +17,7 @@ public:
 	virtual bool OnEvent(const SEvent& event);
 	virtual bool isKeyDown(EKEY_CODE keyCode) const;
 	virtual bool isKeyUp(EKEY_CODE keyCode) const;
+	void changeMissileKind();
 	void getRightRotation();
 	void getRightPosition();
 	void watchTankAnim();

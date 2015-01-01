@@ -1,6 +1,7 @@
 #include "TEvent.h"
 #include "TPlayerTank.h"
 #include "TMath.h"
+#include "TEnemyTank.h"
 #include "TConfig.h"
 #include <iostream>
 using namespace std;
@@ -51,6 +52,19 @@ bool TEvent::isKeyDown(EKEY_CODE keyCode) const
 bool TEvent::isKeyUp(EKEY_CODE keyCode) const
 {
 	return !keyDown[keyCode];
+}
+
+void TEvent::changeMissileKind()
+{
+	if (isKeyDown(KEY_KEY_1)) {
+		TConfig::MISSILE_KIND = 1;
+	}
+	else if (isKeyDown(KEY_KEY_2)) {
+		TConfig::MISSILE_KIND = 2;
+	}
+	else if (isKeyDown(KEY_KEY_3)) {
+		TConfig::MISSILE_KIND = 3;
+	}
 }
 
 
@@ -175,7 +189,7 @@ void TEvent::showInfo()
 		//TInfo::showTankPos();
 		//TInfo::showWorldScale();
 		//TInfo::showCameraTarget();
-		TMath::printV3df(TConfig::st);
+		//TMath::printV3df(TConfig::st);
 	}
 }
 
@@ -230,25 +244,22 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 {
 	if (TGame::player()->leftClick()) {
 		//std::cerr << "cnm" << std::endl;
+
+		TGame::player()->tank()->setMD2Animation("pow");
+
 		core::line3d<f32> ray;
 		ray.start = TGame::player()->camera()->getPosition();
-		ray.start.Y -= 1;
+		//ray.start.Y -= 1;
 		ray.end = ray.start + (TGame::player()->camera()->getTarget() - ray.start).normalize() * 5000.0f;
 		
 		if (TGame::player()->timePermites()) {
-			cerr << "permit" << endl;//Ok,能正常识别时间，每隔3秒允许
+			//cerr << "permit" << endl;//Ok,能正常识别时间，每隔3秒允许
 			TGame::player()->missileQueue().push_back(TMissile(TGame::player()->camera()->getPosition(), (TGame::player()->camera()->getTarget() - ray.start).normalize()));
-			cerr << TGame::player()->missileQueue().size() << endl;
+			//cerr << TGame::player()->missileQueue().size() << endl;
 		}
 
-		//TGame::driver()->draw3DLine(st, ed, video::SColor(255, 0, 0, 0));
-		//TGame::driver()->draw3DLine(ray.start, st,video::SColor(255,0,0,0));
 		TGame::driver()->draw3DLine(ray.start, ray.end, video::SColor(255, 0, 0, 0));
 
-		if (isKeyDown(KEY_KEY_Z)) {
-			std::cerr << "her" << std::endl;
-			TMath::printV3df(ray.start);
-		}
 
 		core::vector3df intersection;
 		core::triangle3df hitTriangle;
@@ -263,13 +274,17 @@ void TEvent::leftMouse(core::vector3df st,core::vector3df ed)
 		//std::cerr << "look:" << std::endl;
 		//TMath::printV3df(intersection);
 
-		if (selectedSceneNode) {
-			std::cerr << "here" << std::endl;
-			TMath::printV3df(selectedSceneNode->getPosition());
-		}
-		else {
-			;
-		}
+		//if (selectedSceneNode) {
+		//	//std::cerr << "here" << std::endl;
+		//	TMath::printV3df(selectedSceneNode->getPosition());
+		//	//TGame::driver()->draw3DTriangle(hitTriangle, video::SColor(0, 255, 0, 0));
+		//}
+		//else {
+		//	//std::cerr<<"蛤蛤没打中"<<endl;
+		//}
+	}
+	else {
+		TGame::player()->tank()->setMD2Animation("idle");
 	}
 }
 
@@ -280,9 +295,6 @@ void TEvent::updateMissiles()
 	for (auto it = missileList.begin(); it != missileList.end();it++) {
 		auto missile = *it;
 		if (nowTime - missile.outTime() > TConfig::MISSILE_EXIST_TIME) {
-			cerr << nowTime << endl;
-			cerr << "dd" << endl;
-			cerr << missile.outTime() << endl;
 			missile.drop();
 			missileList.erase(it);
 			break;
@@ -293,8 +305,49 @@ void TEvent::updateMissiles()
 	}
 	//cerr << missileList.size() << endl;
 	for (auto& missile : missileList) {
+		if (!missile.missile()->isVisible()) continue;
 		missile.update();
+		auto missilePos = missile.missile()->getPosition();
+		//与地形的碰撞检测
+		if (std::abs(missilePos.Y - TGame::world()->terrain()->getHeight(missilePos.X, missilePos.Y))<5) {
+			missile.missile()->setVisible(false);
+			continue;
+		}
+
+		auto& enemyList = TEnemyTank::enemy();
+		for (auto it = enemyList.begin(); it != enemyList.end();it++) {
+			TEnemyTank& enemyTank= *it;
+
+			auto enemyPos = enemyTank.tank()->getPosition();
+			if (
+				 std::abs(missilePos.X-enemyPos.X)<500
+				&& std::abs(missilePos.Z- enemyPos.Z)<500
+				&& std::abs(missilePos.Y- enemyPos.Y)<280
+				) {
+				if (!enemyTank.died()) {
+					enemyTank.beAttacked();
+				}
+
+				missile.missile()->setVisible(false);
+				break;
+			}
+		}
 	}
+
+	auto& enemyList = TEnemyTank::enemy();
+	for (auto it = enemyList.begin(); it != enemyList.end(); it++) {
+		TEnemyTank& enemyTank = *it;
+
+		
+		enemyTank.checkIfFire();
+
+		if (enemyTank.died()) {
+			if (TMath::getNowTime() - enemyTank.diedTime() > TConfig::TANK_DIED_EXISTTIME) {
+				enemyTank.reInit();
+			}
+		}
+	}
+	
 }
 
 void TEvent::print_objApos_Minus_objBpos(scene::ISceneNode * a, scene::ISceneNode * b)

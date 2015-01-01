@@ -18,12 +18,18 @@ private:
 
 	time_t mLastMissileTime;
 
+	int mScore;
+
 public:
 	std::vector<TMissile> mMissileQueue;
 
 	bool isRunning;
 	bool leftClick();
 	void leftClick(bool tclick);
+
+	int score();
+	void score(int s);
+	void scorePlus(int s);
 
 	bool timePermites();//导弹间隔时限已过（cd）
 

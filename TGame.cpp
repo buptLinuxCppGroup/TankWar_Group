@@ -134,7 +134,7 @@ void TGame::run(TPlayerTank * player)
 			bar1 = mSmgr->addBillboardSceneNode(bar1, core::dimension2d<f32>(60, 60));
 			bar1->setMaterialFlag(video::EMF_LIGHTING, false);
 			bar1->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
-			bar1->setMaterialTexture(0, mDriver->getTexture("F:/linux/irrlicht-1.7.3/media/particlered.bmp"));
+			bar1->setMaterialTexture(0, mDriver->getTexture("../../media/particlered.bmp"));
 			*/
 
 

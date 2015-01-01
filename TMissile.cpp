@@ -76,7 +76,7 @@ void TMissile::missileKind1()
 	bill->setMaterialFlag(video::EMF_LIGHTING, false);
 	bill->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
 	bill->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
-	bill->setMaterialTexture(0, TGame::driver()->getTexture("F:/linux/irrlicht-1.7.3/media/particlegreen.jpg"));
+	bill->setMaterialTexture(0, TGame::driver()->getTexture("../../media/particlegreen.jpg"));
 
 	// add particle system
 	ps =
@@ -103,7 +103,7 @@ void TMissile::missileKind1()
 	// adjust some material settings
 	ps->setMaterialFlag(video::EMF_LIGHTING, false);
 	ps->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
-	ps->setMaterialTexture(0, TGame::driver()->getTexture("F:/linux/irrlicht-1.7.3/media/particlered.bmp"));
+	ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/particlered.bmp"));
 	//ps->setMaterialTexture(0, TGame::driver()->getTexture("./data/red.jpg"));
 	//ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/portal2.bmp"));
 	ps->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
@@ -127,7 +127,7 @@ void TMissile::missileKind2()
 	bill->setMaterialFlag(video::EMF_LIGHTING, false);
 	bill->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
 	bill->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
-	bill->setMaterialTexture(0, TGame::driver()->getTexture("F:/linux/irrlicht-1.7.3/media/particlegreen.jpg"));
+	bill->setMaterialTexture(0, TGame::driver()->getTexture("../../media/particlegreen.jpg"));
 
 	// add particle system
 	ps =
@@ -155,7 +155,7 @@ void TMissile::missileKind2()
 	ps->setMaterialFlag(video::EMF_LIGHTING, false);
 	ps->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
 	//ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/fireball.bmp"));
-	ps->setMaterialTexture(0, TGame::driver()->getTexture("F:/linux/irrlicht-1.7.3/media/portal2.bmp"));
+	ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/portal2.bmp"));
 	ps->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
 }
 
@@ -177,7 +177,7 @@ void TMissile::missileKind3()
 	bill->setMaterialFlag(video::EMF_LIGHTING, false);
 	bill->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
 	bill->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
-	bill->setMaterialTexture(0, TGame::driver()->getTexture("F:/linux/irrlicht-1.7.3/media/particlewhite.bmp"));
+	bill->setMaterialTexture(0, TGame::driver()->getTexture("../../media/particlewhite.bmp"));
 
 	// add particle system
 	ps =
@@ -205,7 +205,7 @@ void TMissile::missileKind3()
 	ps->setMaterialFlag(video::EMF_LIGHTING, false);
 	ps->setMaterialFlag(video::EMF_ZWRITE_ENABLE, false);
 	//ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/fireball.bmp"));
-	ps->setMaterialTexture(0, TGame::driver()->getTexture("F:/linux/irrlicht-1.7.3/media/particlewhite.bmp"));
+	ps->setMaterialTexture(0, TGame::driver()->getTexture("../../media/particlewhite.bmp"));
 	ps->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
 }
 

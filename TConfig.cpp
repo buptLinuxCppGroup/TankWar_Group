@@ -2,11 +2,11 @@
 
 //std::string TConfig::TANK_3D_MESH_DIR = "./data/坦克模型/churchill.obj";
 //std::string TConfig::TANK_3D_TEXTURE_DIR = "./data/坦克模型2/churchill/churchill/Churchill.tga";
-std::string TConfig::TANK_3D_MESH_DIR = "F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/坦克模型/churchill.obj";
-std::string TConfig::TANK_3D_TEXTURE_DIR = "F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/坦克模型2/churchill/churchill/Churchill.tga";
+std::string TConfig::TANK_3D_MESH_DIR = "./data/坦克模型/churchill.obj";
+std::string TConfig::TANK_3D_TEXTURE_DIR = "./data/坦克模型2/churchill/churchill/Churchill.tga";
 
-std::string TConfig::GUN1_3D_MESH_DIR = "F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/gun/gun.md2";
-std::string TConfig::GUN1_3D_TEXTURE_DIR = "F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/gun/gun.jpg";
+std::string TConfig::GUN1_3D_MESH_DIR = "./data/gun/gun.md2";
+std::string TConfig::GUN1_3D_TEXTURE_DIR = "./data/gun/gun.jpg";
 
 //std::string TConfig::TANK_3D_MESH_DIR = "./data/坦克模型2/FLACKP 坦克3D模型/FLACKP/FLACKP_L.3DS";
 //std::string TConfig::TANK_3D_TEXTURE_DIR = "./data/坦克模型2/FLACKP 坦克3D模型/FLACKP/FLACKP/MATRICUL.TGA";
@@ -15,8 +15,8 @@ core::vector3df TConfig::TANKpos_MINUS_CAMERApos = core::vector3df(-60.583,0,-68
 
 int TConfig::MISSILE_KIND = 1;
 
-std::string TConfig::MISSILE_3D_MESH_DIR = "F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/坦克模型/churchill.obj";
-std::string TConfig::MISSILE_3D_TEXTURE_DIR = "F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/坦克模型2/churchill/churchill/Churchill.tga";
+std::string TConfig::MISSILE_3D_MESH_DIR = "./data/坦克模型/churchill.obj";
+std::string TConfig::MISSILE_3D_TEXTURE_DIR = "./data/坦克模型2/churchill/churchill/Churchill.tga";
 
 f32 TConfig::MISSILE_SPEED = 10.0;
 

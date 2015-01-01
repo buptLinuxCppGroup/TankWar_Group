@@ -20,7 +20,7 @@ TFire::TFire()
 	maxLife = 300;
 	minSize = dimension2df(60.f, 60.f);
 	maxSize = dimension2df(120.f, 120.f);
-	texturePath = "F:/linux/irrlicht-1.7.3/media/fire.bmp";
+	texturePath = "../../media/fire.bmp";
 	pos = vector3df(0, 0, 0);
 	scale = vector3df(20, 20, 20);
 	isFireNow = false;
@@ -127,7 +127,7 @@ void TFire::resetFire()
 	maxLife = 1000;
 	minSize = dimension2df(10.f, 10.f);
 	maxSize = dimension2df(20.f, 20.f);
-	texturePath = "F:/linux/irrlicht-1.7.3/media/fire.bmp";
+	texturePath = "../../media/fire.bmp";
 	pos = vector3df(0, 0, 0);
 	scale = vector3df(2, 2, 2);
 	stopFire();
@@ -142,7 +142,7 @@ void TFire::setSmallFire(vector3df tpos)
 	maxLife = 2000;
 	minSize = dimension2df(60.f, 60.f);
 	maxSize = dimension2df(120.f, 120.f);
-	texturePath = "F:/linux/irrlicht-1.7.3/media/fire.bmp";
+	texturePath = "../../media/fire.bmp";
 	pos = tpos;
 	scale = vector3df(20, 80, 20);
 	isFireNow = false;
@@ -157,7 +157,7 @@ void TFire::setMiddleFire(vector3df tpos)
 	maxLife = 2000;
 	minSize = dimension2df(80.f, 80.f);
 	maxSize = dimension2df(160.f, 160.f);
-	texturePath = "F:/linux/irrlicht-1.7.3/media/fire.bmp";
+	texturePath = "../../media/fire.bmp";
 	pos = tpos;
 	scale = vector3df(40, 200, 40);
 	isFireNow = false;
@@ -172,7 +172,7 @@ void TFire::setBigFire(vector3df tpos)
 	maxLife = 2000;
 	minSize = dimension2df(300.f, 300.f);
 	maxSize = dimension2df(500.f, 500.f);
-	texturePath = "F:/linux/irrlicht-1.7.3/media/fire.bmp";
+	texturePath = "../../media/fire.bmp";
 	pos = tpos;
 	scale = vector3df(80, 550, 80);
 	isFireNow = false;

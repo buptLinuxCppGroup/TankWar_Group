@@ -21,7 +21,7 @@ scene::ILightSceneNode * TWorld::light()
 
 void TWorld::loadCrossHair()
 {
-	auto mCrosshair= TGame::driver()->getTexture("F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/gun/crosshair.png");
+	auto mCrosshair= TGame::driver()->getTexture("./data/gun/crosshair.png");
 	auto mColors = video::SColor(200, 200, 0, 0);
 	s32 mCrosshairSize = 25;
 	s32 rw = 1024;
@@ -112,7 +112,7 @@ TWorld::TWorld(io::path terrainFile)
 	this->mTerrain->setPosition(core::vector3df(0,0,0));
 	this->mTerrain->setRotation(core::vector3df(0.f,0.f,0.f));
 	this->mTerrain->setMaterialFlag(video::EMF_LIGHTING,false);
-	this->mTerrain->setMaterialTexture(0,TGame::driver()->getTexture("F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/terrain/ttex.jpg"));
+	this->mTerrain->setMaterialTexture(0,TGame::driver()->getTexture("./data/terrain/ttex.jpg"));
 
 	this->mTerrain->setMaterialType(video::EMT_DETAIL_MAP);
 	this->mTerrain->scaleTexture(1.0f,20.0f);

@@ -24,12 +24,12 @@ int main() {
 	TGame::getWorld(&world);
 	TPlayerTank player;
 	TGame::getPlayer(&player);
-	world.addTree2("F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/tree.b3d","F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/tree2.b3d",25,&player);
-	world.addGrass(10, "F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/terrain/terrain-heightmap.bmp","F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/terrain/grass/terrain-grasscol.bmp","F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/terrain/grass/terrain-grassmap.png","F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/terrain/grass/grass.png","F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/terrain/grass/grass2.bmp");
+	world.addTree2("./data/tree.b3d","./data/tree2.b3d",25,&player);
+	world.addGrass(10, "./data/terrain/terrain-heightmap.bmp","./data/terrain/grass/terrain-grasscol.bmp","./data/terrain/grass/terrain-grassmap.png","./data/terrain/grass/grass.png","./data/terrain/grass/grass2.bmp");
 	// create skybox and skydome
 	TGame::driver()->setTextureCreationFlag(video::ETCF_CREATE_MIP_MAPS, true);
 	//world.skybox("./data/terrain/sky/irrlicht2_up.jpg","./data/terrain/sky/irrlicht2_dn.jpg","./data/terrain/sky/irrlicht2_lf.jpg","./data/terrain/sky/irrlicht2_rt.jpg","./data/terrain/sky/irrlicht2_ft.jpg", "./data/terrain/sky/irrlicht2_bk.jpg");
-	world.skydome("F:/linux/irrlicht-1.7.3/examples/02.Quake3Map/data/terrain/sky/skydome.jpg", 16, 8, 0.95f, 2.0f);	
+	world.skydome("./data/terrain/sky/skydome.jpg", 16, 8, 0.95f, 2.0f);	
 	TGame::driver()->setTextureCreationFlag(video::ETCF_CREATE_MIP_MAPS, true);
 	world.loadCrossHair();//¼Ó×¼ÐÇ
 

@@ -8,6 +8,9 @@ class TConfig
 private:
 	static core::vector3df TANKpos_MINUS_CAMERApos;
 public:
+
+	static bool showflag;
+
 	//坦克mesh和texture路径
 	static std::string TANK_3D_MESH_DIR;
 	static std::string TANK_3D_TEXTURE_DIR;
@@ -59,8 +62,20 @@ public:
 	//击杀单个坦克得分
 	const static int TANK_SCORE = 100;
 
+	//坦克面对目标时的角度修正
+	const static int TANK_ATTACK_RANGLE;
+	const static f32 TANK_TARGET_ROTATION_ANGLE;
+
+	//坦克相对地图高度修正
+	const static f32 TANK_INIT_HEIGHT;
 	static core::vector3df st ;
 	static core::vector3df ed ;
+
+	//坦克的初始速度
+	const static int TANK_INIT_SPEED = 5;
+
+	//坦克间的距离
+	const static int TANK_DISTANCE = 550;
 	TConfig();
 ~TConfig();
 };

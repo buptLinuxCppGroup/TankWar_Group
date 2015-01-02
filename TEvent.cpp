@@ -185,11 +185,12 @@ void TEvent::watchTankAnim()
 void TEvent::showInfo()
 {
 	if (isKeyDown(KEY_KEY_Z)) {
-		TInfo::showCameraPos();
+		//TInfo::showCameraPos();
 		//TInfo::showTankPos();
 		//TInfo::showWorldScale();
 		//TInfo::showCameraTarget();
 		//TMath::printV3df(TConfig::st);
+		TConfig::showflag = true;//显示敌方坦克的旋转信息
 	}
 }
 

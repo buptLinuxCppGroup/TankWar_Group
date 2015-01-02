@@ -5,6 +5,7 @@
 #include "TBloodBar.h"
 #include "TMark.h"
 #include "TGame.h"
+#include "TEnemyTank.h"
 #include <iostream>
 using namespace std;
 scene::ISceneManager* TGame::mSmgr = NULL;
@@ -74,6 +75,14 @@ void TGame::drop()
 
 void TGame::run(TPlayerTank * player)
 {
+	int table = 40;
+	vector3df Shock[4];
+	Shock[0] = vector3df(table, table, 0);
+	Shock[1] = vector3df(-table, -table, 0);
+	Shock[2] = vector3df(table, -table, 0);
+	Shock[3] = vector3df(-table, table, 0);
+	int shockIdx = 0;
+
 	int i1 = 0, i2 = 0, i3 = 0;
 	TEvent* event = new TEvent(player);
 	TGame::device()->setEventReceiver(event);
@@ -86,6 +95,25 @@ void TGame::run(TPlayerTank * player)
 
 			event->showInfo();
 			event->changeMissileKind();
+
+
+			vector<TEnemyTank> Enemy = TEnemyTank::enemy();
+			for (int i = 0; i < Enemy.size(); i++)
+			{
+				vector3df R0 = TConfig::TANK_INIT_ROTATION;
+				vector3df R1 = Enemy[i].updateTarget(player->getPosition());
+				vector3df R2 = Enemy[i].updateRotation();
+
+				//Enemy[i].tank()->setRotation(R0 + R1 + R2);
+				Enemy[i].tank()->setRotation(R0 + R1 );
+				Enemy[i].tank()->setPosition(Enemy[i].updatePosition(player->getPosition(),TConfig::TANK_ATTACK_RANGLE));
+			}
+			TEnemyTank::avoidCollide();
+
+			/*Shocked
+			player->camera()->setTarget(player->camera()->getTarget()+Shock[shockIdx]);
+			Shocked*/
+
 			//event->moveTankPos();
 			//event->moveTankRotation();
 			//event->correctY();
@@ -139,6 +167,13 @@ void TGame::run(TPlayerTank * player)
 
 
 			mDriver->endScene();
+
+
+			/*Shocked
+			player->camera()->setTarget(player->camera()->getTarget() - Shock[shockIdx]);
+			shockIdx = (shockIdx + 1) % 4;
+			Shocked*/
+
 			//		}
 			//		else {
 			//			mDevice->yield();

@@ -1,5 +1,8 @@
 #include "TConfig.h"
 
+
+
+bool TConfig::showflag = false;
 //std::string TConfig::TANK_3D_MESH_DIR = "./data/坦克模型/churchill.obj";
 //std::string TConfig::TANK_3D_TEXTURE_DIR = "./data/坦克模型2/churchill/churchill/Churchill.tga";
 std::string TConfig::TANK_3D_MESH_DIR = "./data/坦克模型/churchill.obj";
@@ -31,6 +34,12 @@ core::vector3df TConfig::ed = core::vector3df(1610.4, 1435.141, 2132.17);
 time_t TConfig::TANK_DIED_EXISTTIME = 3;
 
 const core::vector3df TConfig::FIRE_TANK_CENTER_DIS=core::vector3df(150,0,250);
+
+
+const int TConfig::TANK_ATTACK_RANGLE = 1500;
+const f32 TConfig::TANK_TARGET_ROTATION_ANGLE = 170.f;
+const f32 TConfig::TANK_INIT_HEIGHT = -50.f;
+
 
 core::vector3df TConfig::getTANKpos_MINUS_CAMERApos()
 {

@@ -14,6 +14,7 @@ class TEnemyTank
 private:
 	scene::IAnimatedMeshSceneNode* mTank;
 	static std::vector<TEnemyTank> mEnemy;
+	int mSpeed;
 	int fullHp;
 	int mHp;
 	bool mDied;
@@ -27,6 +28,12 @@ public:
 	scene::IAnimatedMeshSceneNode* tank();
 	static std::vector<TEnemyTank>& enemy();
 	int hp();
+	void setSpeed(int speed);
+	int Speed();
+	vector3df updateTarget(vector3df playerPos);
+	vector3df updatePosition(vector3df playerPos,f32 attackRangle);
+	vector3df updateRotation();
+	static void avoidCollide();
 	void beAttacked();
 	void reInit();
 	TEnemyTank();

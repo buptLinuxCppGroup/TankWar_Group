@@ -145,7 +145,7 @@ vector3df TEnemyTank::updateRotation()
 	f32 Zdegree = TMath::getAngle(XYt, vertocal)*(180 / PI);
 	f32 Ydegree = TMath::getAngle(XYt, t)*(180 / PI);
 
-	if (TConfig::showflag)
+	/*if (TConfig::showflag)
 	{
 		cout << "A: ";
 		TMath::printV3df(A);
@@ -159,7 +159,7 @@ vector3df TEnemyTank::updateRotation()
 		TMath::printV3df(BC);
 		cout << "R2:" << Ydegree << " " << Zdegree << endl;
 		TConfig::showflag = false;
-	}
+	}*/
 
 	return vector3df(0, Ydegree, Zdegree);
 }
@@ -168,23 +168,36 @@ void TEnemyTank::avoidCollide()
 {
 	for (int i = 0; i < mEnemy.size(); i++)
 	{
-		for (int j = 0; j < mEnemy.size(); j++)
+		for (int j = i+1; j < mEnemy.size(); j++)
 		{
-			if (i == j) continue;
+			//if (i == j) continue;
 			vector3df p1 = mEnemy[i].mTank->getPosition();
 			vector3df p2 = mEnemy[j].mTank->getPosition();
 			double degree = TMath::getAngle(p1, p2);
+			//if (degree*(180 / PI) > 0 && degree*(180 / PI) < 180) {
 			f32 xSpeed = abs(cos(degree)*mEnemy[i].mSpeed);
 			f32 zSpeed = abs(sin(degree)*mEnemy[i].mSpeed);
 			if (TMath::getDistance(p1, p2) < TConfig::TANK_DISTANCE)
 			{
-				if (p1.X - p2.X > 0 && p1.X - p2.X < TConfig::TANK_DISTANCE) p1.X += xSpeed;
+				/*if (p1.X - p2.X >= 0 && p1.X - p2.X < TConfig::TANK_DISTANCE) p1.X += xSpeed;
 				else if (p2.X - p1.X > 0 && p2.X - p1.X < TConfig::TANK_DISTANCE) p1.X -= xSpeed;
-				if (p1.Z - p2.Z >0 && p1.Z - p2.Z > TConfig::TANK_DISTANCE) p1.Z += zSpeed;
-				else if (p2.Z - p1.Z > 0 && p2.Z - p1.Z > TConfig::TANK_DISTANCE) p1.Z -= zSpeed;
+				if (p1.Z - p2.Z >= 0 && p1.Z - p2.Z < TConfig::TANK_DISTANCE) p1.Z += zSpeed;
+				else if (p2.Z - p1.Z > 0 && p2.Z - p1.Z < TConfig::TANK_DISTANCE) p1.Z -= zSpeed;*/
+				vector3df tmp = p1 - p2;
+				p1 += tmp * ((double)mEnemy[i].mSpeed/TConfig::TANK_DISTANCE);
 			}
 			mEnemy[i].mTank->setPosition(p1);
 		}
+	}
+
+	if (TConfig::showflag )
+	{
+		for (int i = 0; i < mEnemy.size(); i++)
+		{
+			cout << "R" << i << ": ";
+			cout << mEnemy[i].mTank->getPosition().X << " " << mEnemy[i].mTank->getPosition().Y << " " << mEnemy[i].mTank->getPosition().Z << endl;
+		}
+		TConfig::showflag = false;
 	}
 }
 
@@ -208,7 +221,7 @@ void TEnemyTank::reInit()
 	newPos.Z= TMath::randomBetweenMinMax(minEdgeExtended.X, maxEdgeExtended.X);
 	newPos.Y = TGame::world()->terrain()->getHeight(newPos.X,newPos.Y)+TConfig::TANK_INIT_HEIGHT;
 	mTank->setPosition(newPos);
-
+	this->mSpeed = TConfig::TANK_INIT_SPEED;
 	mHp = TMath::randomBetweenMinMax(TConfig::MISSILE_HP_DOWN,TConfig::MISSILE_HP_UP);
 	fullHp = mHp;
 

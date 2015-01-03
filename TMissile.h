@@ -21,6 +21,8 @@ private:
 	scene::IParticleEmitter* em;
 	scene::IParticleAffector* paf;
 public:
+	core::vector3df getDirection();
+	void setDirection(core::vector3df s);
 	void enimInit();
 	void enimInitForEnemy();
 	void missileKind1();

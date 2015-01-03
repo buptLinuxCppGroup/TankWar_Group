@@ -360,7 +360,7 @@ void TEvent::updateEnemyMissiles()
 		//添加新弹
 		if (nowTime - eachEnemy.lastMissileTime()>TConfig::MISSILE_INTERVAL_TIME + rand()%5) {
 			auto enemyMissileStartPos = eachEnemy.tank()->getPosition();
-			enemyMissileStartPos.Y += 200;
+			enemyMissileStartPos.Y += 200;//修正导弹高度
 			missileList.push_back(TMissile(enemyMissileStartPos , (TGame::player()->camera()->getPosition()-enemyMissileStartPos).normalize(),true));
 			//cerr << "lookhere" << endl;
 			//TMath::printV3df(eachEnemy.tank()->getPosition());
@@ -376,14 +376,31 @@ void TEvent::updateEnemyMissiles()
 		}
 		//导弹与我判定
 		for (auto& eachMissile : missileList) {
+			//更新导弹位置
 			eachMissile.update();
-			if (!eachMissile.missile()->isVisible()) continue;
-			auto missilePos=eachMissile.missile()->getPosition();
-			auto myPos = TGame::player()->getPosition();
-			if (TMath::getDistance(missilePos, myPos) < 300) {
-				TGame::player()->beAttacked();
-				cout << "当前人物血量:" << TGame::player()->hp() << endl;
+
+			//与地形的碰撞检测
+			auto missilePos = eachMissile.missile()->getPosition();
+			if (std::abs(missilePos.Y - TGame::world()->terrain()->getHeight(missilePos.X, missilePos.Y))<5) {
 				eachMissile.missile()->setVisible(false);
+				continue;
+			}
+
+			if (!eachMissile.missile()->isVisible()) continue;
+			auto myPos = TGame::player()->getPosition();
+			bool isGod = true;
+			if (TMath::getDistance(missilePos, myPos) < 300) {
+				if (!isGod) {
+					TGame::player()->beAttacked();
+					cout << "当前人物血量:" << TGame::player()->hp() << endl;
+					eachMissile.missile()->setVisible(false);
+				}
+				else {
+					auto nowDir = eachMissile.getDirection();
+					nowDir = -1 * nowDir;
+					nowDir.Y += 0.3;
+					eachMissile.setDirection(nowDir);
+				}
 			}
 		}
 	}

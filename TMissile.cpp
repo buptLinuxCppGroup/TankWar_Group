@@ -22,6 +22,16 @@ scene::ISceneNode* TMissile::missile()
 	return light2;
 }
 
+core::vector3df TMissile::getDirection()
+{
+	return direction;
+}
+
+void TMissile::setDirection(core::vector3df s)
+{
+	direction = s;
+}
+
 void TMissile::enimInit()
 {
 	switch (TConfig::MISSILE_KIND)

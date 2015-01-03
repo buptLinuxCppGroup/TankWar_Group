@@ -388,7 +388,7 @@ void TEvent::updateEnemyMissiles()
 
 			if (!eachMissile.missile()->isVisible()) continue;
 			auto myPos = TGame::player()->getPosition();
-			bool isGod = true;
+			bool isGod = false;
 			if (TMath::getDistance(missilePos, myPos) < 300) {
 				if (!isGod) {
 					TGame::player()->beAttacked();

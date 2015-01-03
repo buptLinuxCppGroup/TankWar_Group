@@ -58,6 +58,43 @@ void TMissile::enimInit()
 	}
 }
 
+void TMissile::enimInitForEnemy()
+{
+	int kind = 1 + rand() % 3;
+	switch (kind)
+	{
+	case 1: {
+		TMissile::hasGravity = true;
+		TConfig::MISSILE_INTERVAL_TIME = 1.0;
+		TConfig::MISSILE_DAMAGE1 = 5000;
+		TConfig::MISSILE_EXIST_TIME = 10;
+		TConfig::MISSILE_SPEED = 5;
+		missileKind1();
+		break;
+	}
+	case 2: {
+		TMissile::hasGravity = false;
+		TConfig::MISSILE_INTERVAL_TIME = 1.0;
+		TConfig::MISSILE_DAMAGE1 = 2000;
+		TConfig::MISSILE_EXIST_TIME = 8;
+		TConfig::MISSILE_SPEED = 7;
+		missileKind2();
+		break;
+	}
+	case 3: {
+		TMissile::hasGravity = false;
+		TConfig::MISSILE_INTERVAL_TIME = 0.0;
+		TConfig::MISSILE_DAMAGE1 = 700;
+		TConfig::MISSILE_EXIST_TIME = 4;
+		TConfig::MISSILE_SPEED = 15.0;
+		missileKind3();
+		break;
+	}
+	default:
+		break;
+	}
+}
+
 void TMissile::missileKind1()
 {
 	// add light 2 (red)
@@ -217,6 +254,16 @@ TMissile::TMissile(core::vector3df pos, core::vector3df direction)
 	this->mOutTime = time(NULL);
 	//setMissileAnimator(TConfig::MISSILE_3D_MESH_DIR.c_str(), TConfig::MISSILE_3D_TEXTURE_DIR.c_str(),pos);
 	enimInit();
+}
+
+TMissile::TMissile(core::vector3df pos, core::vector3df direction,bool isEnemyMissile)
+{
+	this->pos = pos;
+	this->speed = TConfig::MISSILE_SPEED;
+	this->direction = direction.normalize();
+	this->mOutTime = time(NULL);
+	//setMissileAnimator(TConfig::MISSILE_3D_MESH_DIR.c_str(), TConfig::MISSILE_3D_TEXTURE_DIR.c_str(),pos);
+	enimInitForEnemy();
 }
 
 void TMissile::setMissileAnimator(io::path animFile, io::path textureFile,core::vector3df pos)

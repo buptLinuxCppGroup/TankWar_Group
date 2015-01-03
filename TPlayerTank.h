@@ -19,7 +19,8 @@ private:
 	time_t mLastMissileTime;
 
 	int mScore;
-
+	int mHp;
+	
 public:
 	std::vector<TMissile> mMissileQueue;
 
@@ -28,6 +29,8 @@ public:
 	void leftClick(bool tclick);
 
 	int score();
+	int hp();
+	void beAttacked();
 	void score(int s);
 	void scorePlus(int s);
 

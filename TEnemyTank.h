@@ -20,7 +20,11 @@ private:
 	bool mDied;
 	time_t mDiedTime;
 	TFire mFire;
+
+	time_t mLastMissileTime;
 public:
+	std::vector<TMissile> mMissileQueue;
+
 	bool died();
 	TFire fire();
 	void checkIfFire();
@@ -34,6 +38,8 @@ public:
 	vector3df updatePosition(vector3df playerPos,f32 attackRangle);
 	vector3df updateRotation();
 	static void avoidCollide();
+	time_t lastMissileTime();
+	void setLastMissileTime(time_t s);
 	void beAttacked();
 	void reInit();
 	TEnemyTank();

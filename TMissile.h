@@ -22,10 +22,12 @@ private:
 	scene::IParticleAffector* paf;
 public:
 	void enimInit();
+	void enimInitForEnemy();
 	void missileKind1();
 	void missileKind2();
 	void missileKind3();
 	TMissile(core::vector3df pos, core::vector3df direction);
+	TMissile(core::vector3df pos, core::vector3df direction,bool isEnemyMissile);
 	time_t outTime();
 	time_t outTime(time_t ttime);
 	scene::ISceneNode* missile();

@@ -24,6 +24,16 @@ int TPlayerTank::score()
 	return mScore;
 }
 
+int TPlayerTank::hp()
+{
+	return mHp;
+}
+
+void TPlayerTank::beAttacked()
+{
+	mHp -= TConfig::MISSILE_DAMAGE1;
+}
+
 void TPlayerTank::score(int s)
 {
 	mScore = s;
@@ -136,6 +146,7 @@ TPlayerTank::TPlayerTank()
 	mLastMissileTime = 0;
 
 	mScore = 0;
+	mHp = 999999;
 }
 
 

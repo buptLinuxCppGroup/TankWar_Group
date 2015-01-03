@@ -306,8 +306,8 @@ void TEvent::updateMissiles()
 	}
 	//cerr << missileList.size() << endl;
 	for (auto& missile : missileList) {
-		if (!missile.missile()->isVisible()) continue;
 		missile.update();
+		if (!missile.missile()->isVisible()) continue;
 		auto missilePos = missile.missile()->getPosition();
 		//与地形的碰撞检测
 		if (std::abs(missilePos.Y - TGame::world()->terrain()->getHeight(missilePos.X, missilePos.Y))<5) {
@@ -349,6 +349,44 @@ void TEvent::updateMissiles()
 		}
 	}
 	
+}
+
+void TEvent::updateEnemyMissiles()
+{
+	time_t nowTime = time(NULL);
+	auto& enemyList=TEnemyTank::enemy();
+	for (auto& eachEnemy : enemyList) {
+		auto& missileList = eachEnemy.mMissileQueue;
+		//添加新弹
+		if (nowTime - eachEnemy.lastMissileTime()>TConfig::MISSILE_INTERVAL_TIME + rand()%5) {
+			auto enemyMissileStartPos = eachEnemy.tank()->getPosition();
+			enemyMissileStartPos.Y += 200;
+			missileList.push_back(TMissile(enemyMissileStartPos , (TGame::player()->camera()->getPosition()-enemyMissileStartPos).normalize(),true));
+			//cerr << "lookhere" << endl;
+			//TMath::printV3df(eachEnemy.tank()->getPosition());
+			eachEnemy.setLastMissileTime(nowTime);
+		}
+		//去除过时导弹
+		for (auto it = missileList.begin(); it != missileList.end();it++) {
+			if (nowTime - it->outTime() >= TConfig::MISSILE_EXIST_TIME) {
+				it->missile()->setVisible(false);
+				missileList.erase(it);
+				break;
+			}
+		}
+		//导弹与我判定
+		for (auto& eachMissile : missileList) {
+			eachMissile.update();
+			if (!eachMissile.missile()->isVisible()) continue;
+			auto missilePos=eachMissile.missile()->getPosition();
+			auto myPos = TGame::player()->getPosition();
+			if (TMath::getDistance(missilePos, myPos) < 300) {
+				TGame::player()->beAttacked();
+				cout << "当前人物血量:" << TGame::player()->hp() << endl;
+				eachMissile.missile()->setVisible(false);
+			}
+		}
+	}
 }
 
 void TEvent::print_objApos_Minus_objBpos(scene::ISceneNode * a, scene::ISceneNode * b)

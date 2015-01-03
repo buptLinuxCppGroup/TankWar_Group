@@ -12,6 +12,7 @@ TEnemyTank::TEnemyTank()
 	mDiedTime = 0;
 	mFire.setPos(mTank->getPosition());
 	mSpeed = TConfig::TANK_INIT_SPEED;
+	mLastMissileTime = 0;
 }
 
 bool TEnemyTank::died()
@@ -199,6 +200,16 @@ void TEnemyTank::avoidCollide()
 		}
 		TConfig::showflag = false;
 	}
+}
+
+time_t TEnemyTank::lastMissileTime()
+{
+	return mLastMissileTime;
+}
+
+void TEnemyTank::setLastMissileTime(time_t s)
+{
+	mLastMissileTime= s;
 }
 
 void TEnemyTank::beAttacked()

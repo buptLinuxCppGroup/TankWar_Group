@@ -6,6 +6,7 @@
 #include "TMissile.h"
 #include "TInfo.h"
 #include "TMissile.h"
+#include "TConfig.h"
 using namespace irr;
 class TEvent : public IEventReceiver 
 {
@@ -27,6 +28,7 @@ public:
 	void correctY();
 	void leftMouse(core::vector3df st, core::vector3df ed);
 	void updateMissiles();
+	void updateEnemyMissiles();
 	void print_objApos_Minus_objBpos(scene::ISceneNode* a, scene::ISceneNode* b);
 	void setStEd(core::vector3df& st, core::vector3df& ed) {
 		if (isKeyDown(KEY_KEY_X)) {

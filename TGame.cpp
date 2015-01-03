@@ -149,6 +149,9 @@ void TGame::run(TPlayerTank * player)
 
 			TGame::world()->loadCrossHair();
 			event->updateMissiles();
+
+			event->updateEnemyMissiles();
+			
 			TBloodBar B(mDevice, mDriver, i2);
 			i1 = TGame::player()->score();
 			TMark M(mDevice, mDriver, i1);

@@ -317,8 +317,9 @@ void TEvent::updateMissiles()
 		}
 
 		auto& enemyList = TEnemyTank::enemy();
-		for (auto it = enemyList.begin(); it != enemyList.end();it++) {
-			TEnemyTank& enemyTank= *it;
+		//for (auto it = enemyList.begin(); it != enemyList.end();it++) {
+		for (int i = 0; i < enemyList.size();i++) {
+			TEnemyTank& enemyTank= enemyList[i];
 
 			auto enemyPos = enemyTank.tank()->getPosition();
 			if (
@@ -328,8 +329,7 @@ void TEvent::updateMissiles()
 				) {
 				if (!enemyTank.died()) {
 					enemyTank.beAttacked();
-					TConfig a;
-					a.attackedID();
+					TConfig::ATTACK_ID = i;
 					
 				}
 
@@ -362,7 +362,7 @@ void TEvent::updateEnemyMissiles()
 	for (auto& eachEnemy : enemyList) {
 		auto& missileList = eachEnemy.mMissileQueue;
 		//添加新弹
-		if (nowTime - eachEnemy.lastMissileTime()>TConfig::MISSILE_INTERVAL_TIME + rand()%5) {
+		if (nowTime - eachEnemy.lastMissileTime()>TConfig::MISSILE_INTERVAL_TIME_ENEMY + rand()%5) {
 			auto enemyMissileStartPos = eachEnemy.tank()->getPosition();
 			enemyMissileStartPos.Y += 200;//修正导弹高度
 			missileList.push_back(TMissile(enemyMissileStartPos , (TGame::player()->camera()->getPosition()-enemyMissileStartPos).normalize(),true));

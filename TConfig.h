@@ -7,10 +7,11 @@ class TConfig
 {
 private:
 	static core::vector3df TANKpos_MINUS_CAMERApos;
-	static int tankID;
 public:
 
 	static bool showflag;
+	//被打坦克的ID
+	static int ATTACK_ID;
 
 	//坦克mesh和texture路径
 	static std::string TANK_3D_MESH_DIR;
@@ -29,6 +30,7 @@ public:
 
 	//导弹发射间隔时间和导弹存在时间
 	static double MISSILE_INTERVAL_TIME;
+	static double MISSILE_INTERVAL_TIME_ENEMY;
 	static int MISSILE_EXIST_TIME;
 
 	//设置导弹与敌方坦克的命中距离
@@ -78,7 +80,6 @@ public:
 	//坦克间的距离
 	const static int TANK_DISTANCE = 550;
 	TConfig();
-	int attackedID();
 ~TConfig();
 };
 

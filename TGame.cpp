@@ -83,8 +83,7 @@ void TGame::run(TPlayerTank * player)
 	Shock[3] = vector3df(-table, table, 0);
 	int shockIdx = 0;
 
-	
-	TEnemyTank hp;
+
 	int i1 = 0, i2 = 0, i3 = 0,h = 0;
 	TEvent* event = new TEvent(player);
 	TGame::device()->setEventReceiver(event);
@@ -161,10 +160,13 @@ void TGame::run(TPlayerTank * player)
 		
 			
 			TBloodBar enemy;
-			h = hp.getFullHp();
-			i3 = 200 - (hp.hp() / (h / 200));
-			enemy.TBloodBarEnemy(mDevice, mDriver, i3);
-
+			int attacedEnemyID = TConfig::ATTACK_ID;
+			if (attacedEnemyID != INT_MAX) {
+				h = TEnemyTank::enemy().at(attacedEnemyID).getFullHp();
+				auto nowHp = TEnemyTank::enemy().at(attacedEnemyID).hp();
+				i3 = 200 - (nowHp / (h / 200));
+				enemy.TBloodBarEnemy(mDevice, mDriver, i3);
+			}
 			mDriver->endScene();
 
 

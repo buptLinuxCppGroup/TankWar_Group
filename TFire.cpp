@@ -140,8 +140,8 @@ void TFire::setSmallFire(vector3df tpos)
 	maxRate = 100;
 	minLife = 600;
 	maxLife = 1300;
-	minSize = dimension2df(300.f, 300.f);
-	maxSize = dimension2df(500.f, 500.f);
+	minSize = dimension2df(200.f, 400.f);
+	maxSize = dimension2df(350.f, 700.f);
 	texturePath = "../../media/fire.bmp";
 	pos = tpos;
 	scale = vector3df(20, 80, 20);
@@ -155,8 +155,8 @@ void TFire::setMiddleFire(vector3df tpos)
 	maxRate = 100;
 	minLife = 700;
 	maxLife = 1600;
-	minSize = dimension2df(300.f, 300.f);
-	maxSize = dimension2df(500.f, 500.f);
+	minSize = dimension2df(200.f, 400.f);
+	maxSize = dimension2df(350.f, 700.f);
 	texturePath = "../../media/fire.bmp";
 	pos = tpos;
 	scale = vector3df(40, 200, 40);
@@ -170,11 +170,11 @@ void TFire::setBigFire(vector3df tpos)
 	maxRate = 100;
 	minLife = 800;
 	maxLife = 2000;
-	minSize = dimension2df(300.f, 300.f);
-	maxSize = dimension2df(500.f, 500.f);
+	minSize = dimension2df(200.f, 500.f);
+	maxSize = dimension2df(450.f, 850.f);
 	texturePath = "../../media/fire.bmp";
 	pos = tpos;
-	scale = vector3df(80, 550, 80);
+	scale = vector3df(70, 550, 70);
 	isFireNow = false;
 }
 

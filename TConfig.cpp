@@ -23,8 +23,11 @@ std::string TConfig::MISSILE_3D_TEXTURE_DIR = "./data/Ì¹¿ËÄ£ÐÍ2/churchill/church
 
 f32 TConfig::MISSILE_SPEED = 10.0;
 
+double TConfig::MISSILE_INTERVAL_TIME_ENEMY = 1;
 double TConfig::MISSILE_INTERVAL_TIME = 1;
 int TConfig::MISSILE_EXIST_TIME = 10;
+
+int TConfig::ATTACK_ID = INT_MAX;
 
 int TConfig::MISSILE_DAMAGE1 = 700;
 
@@ -54,7 +57,3 @@ TConfig::~TConfig()
 {
 }
 
-int TConfig::attackedID()
-{
-	return tankID;
-}

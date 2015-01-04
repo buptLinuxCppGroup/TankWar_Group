@@ -75,7 +75,7 @@ void TMissile::enimInitForEnemy()
 	{
 	case 1: {
 		TMissile::hasGravity = true;
-		TConfig::MISSILE_INTERVAL_TIME = 1.0;
+		TConfig::MISSILE_INTERVAL_TIME_ENEMY = 1.0;
 		TConfig::MISSILE_DAMAGE1 = 5000;
 		TConfig::MISSILE_EXIST_TIME = 10;
 		TConfig::MISSILE_SPEED = 5;
@@ -84,7 +84,7 @@ void TMissile::enimInitForEnemy()
 	}
 	case 2: {
 		TMissile::hasGravity = false;
-		TConfig::MISSILE_INTERVAL_TIME = 1.0;
+		TConfig::MISSILE_INTERVAL_TIME_ENEMY = 1.0;
 		TConfig::MISSILE_DAMAGE1 = 2000;
 		TConfig::MISSILE_EXIST_TIME = 8;
 		TConfig::MISSILE_SPEED = 7;
@@ -93,7 +93,7 @@ void TMissile::enimInitForEnemy()
 	}
 	case 3: {
 		TMissile::hasGravity = false;
-		TConfig::MISSILE_INTERVAL_TIME = 0.0;
+		TConfig::MISSILE_INTERVAL_TIME_ENEMY = 0.0;
 		TConfig::MISSILE_DAMAGE1 = 700;
 		TConfig::MISSILE_EXIST_TIME = 4;
 		TConfig::MISSILE_SPEED = 15.0;

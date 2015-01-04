@@ -84,7 +84,7 @@ void TGame::run(TPlayerTank * player)
 	int shockIdx = 0;
 
 	
-	
+	TEnemyTank hp;
 	int i1 = 0, i2 = 0, i3 = 0,h = 0;
 	TEvent* event = new TEvent(player);
 	TGame::device()->setEventReceiver(event);
@@ -159,7 +159,7 @@ void TGame::run(TPlayerTank * player)
 			i1 = TGame::player()->score();
 			TMark M(mDevice, mDriver, i1);
 		
-			TEnemyTank hp;
+			
 			TBloodBar enemy;
 			h = hp.getFullHp();
 			i3 = 200 - (hp.hp() / (h / 200));

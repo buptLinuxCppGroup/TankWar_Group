@@ -53,3 +53,8 @@ TConfig::TConfig()
 TConfig::~TConfig()
 {
 }
+
+int TConfig::attackedID()
+{
+	return tankID;
+}

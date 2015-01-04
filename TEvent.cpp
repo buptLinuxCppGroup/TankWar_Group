@@ -3,6 +3,7 @@
 #include "TMath.h"
 #include "TEnemyTank.h"
 #include "TConfig.h"
+#include "TBloodBar.h"
 #include <iostream>
 using namespace std;
 
@@ -327,6 +328,9 @@ void TEvent::updateMissiles()
 				) {
 				if (!enemyTank.died()) {
 					enemyTank.beAttacked();
+					TConfig a;
+					a.attackedID();
+					
 				}
 
 				missile.missile()->setVisible(false);

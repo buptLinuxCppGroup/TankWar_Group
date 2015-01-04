@@ -7,6 +7,7 @@ class TConfig
 {
 private:
 	static core::vector3df TANKpos_MINUS_CAMERApos;
+	static int tankID;
 public:
 
 	static bool showflag;
@@ -77,6 +78,7 @@ public:
 	//Ì¹¿Ë¼äµÄ¾àÀë
 	const static int TANK_DISTANCE = 550;
 	TConfig();
+	int attackedID();
 ~TConfig();
 };
 

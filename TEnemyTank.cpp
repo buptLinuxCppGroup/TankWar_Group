@@ -280,3 +280,8 @@ void TEnemyTank::setTankAnimator(io::path animFile, io::path textureFile)
 TEnemyTank::~TEnemyTank()
 {
 }
+
+int TEnemyTank::getFullHp()
+{
+	return fullHp;
+}

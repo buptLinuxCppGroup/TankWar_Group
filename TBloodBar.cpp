@@ -1,4 +1,5 @@
 #include"TBloodBar.h"
+#include "TEnemyTank.h"
 #include<iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +13,7 @@ TBloodBar::TBloodBar(irr::IrrlichtDevice* mDevice, video::IVideoDriver* mDriver,
 	irr::gui::IGUIEnvironment *guienv = mDevice->getGUIEnvironment();
 	irr::gui::IGUIFont *font = guienv->getFont("lucida.xml");
 	guienv->drawAll();
-	static int damage1 = 0;
+	int damage1 = 0;
 	damage1 = damage1 + a1;
 	font->draw(L"HP", irr::core::rect<s32>(5, 15, 10, 35), irr::video::SColor(255, 0, 0, 0));
 	if (damage1 < 200){
@@ -20,7 +21,7 @@ TBloodBar::TBloodBar(irr::IrrlichtDevice* mDevice, video::IVideoDriver* mDriver,
 		mDriver->draw2DRectangle(irr::video::SColor(255, 255, 255, 255), irr::core::rect<s32>(230 - damage1, 15, 230, 35));
 	}
 	else{
-		mDriver->draw2DRectangle(irr::video::SColor(255, 255, 255, 255), irr::core::rect<s32>(30, 15, 200, 35));
+		mDriver->draw2DRectangle(irr::video::SColor(255, 255, 255, 255), irr::core::rect<s32>(30, 15, 230, 35));
 		cout << "game over" << endl;
 	}
 
@@ -31,8 +32,9 @@ void TBloodBar::TBloodBarEnemy(irr::IrrlichtDevice* mDevice, video::IVideoDriver
 	irr::gui::IGUIEnvironment *guienv = mDevice->getGUIEnvironment();
 	irr::gui::IGUIFont *font = guienv->getFont("lucida.xml");
 	guienv->drawAll();
-	static int damage2 = 0;
+	int damage2 = 0;
 	damage2 = damage2 + a2;
+	
 	font->draw(L"EnemyHP", irr::core::rect<s32>(500, 15, 10, 35), irr::video::SColor(255, 0, 0, 0));
 	if (damage2 < 200){
 		mDriver->draw2DRectangle(irr::video::SColor(255, 255, 0, 0), irr::core::rect<s32>(560, 15, 760 - damage2, 35));

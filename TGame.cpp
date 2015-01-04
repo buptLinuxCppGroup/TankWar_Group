@@ -83,7 +83,9 @@ void TGame::run(TPlayerTank * player)
 	Shock[3] = vector3df(-table, table, 0);
 	int shockIdx = 0;
 
-	int i1 = 0, i2 = 0, i3 = 0;
+	TEnemyTank hp;
+	
+	int i1 = 0, i2 = 0, i3 = 0,h = 0;
 	TEvent* event = new TEvent(player);
 	TGame::device()->setEventReceiver(event);
 	if (mDevice->isWindowActive()) {
@@ -152,22 +154,15 @@ void TGame::run(TPlayerTank * player)
 
 			event->updateEnemyMissiles();
 			
+			i2 = 200-(int)(TGame::player()->hp()/ 5000);
 			TBloodBar B(mDevice, mDriver, i2);
 			i1 = TGame::player()->score();
 			TMark M(mDevice, mDriver, i1);
-			/*
-			scene::ISceneNode* bar1 = mSmgr->addLightSceneNode(0, core::vector3df(0, 0, 0), video::SColorf(1.0f, 0.0f, 0.0f, 0.0f), 800.0f);
-			bar1->setDebugDataVisible(scene::EDS_BBOX);
-			scene::ISceneNodeAnimator* anim = 0;
-			anim = mSmgr->createFlyCircleAnimator(core::vector3df(50, 300, 0), 190.0f, -0.003f);
-			bar1->addAnimator(anim);
-			anim->drop();
-			bar1 = mSmgr->addBillboardSceneNode(bar1, core::dimension2d<f32>(60, 60));
-			bar1->setMaterialFlag(video::EMF_LIGHTING, false);
-			bar1->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
-			bar1->setMaterialTexture(0, mDriver->getTexture("../../media/particlered.bmp"));
-			*/
-
+		
+			TBloodBar enemy;
+			h = hp.getFullHp();
+			i3 = 200-(hp.hp()/(h/200));			
+			enemy.TBloodBarEnemy(mDevice, mDriver, i3);
 
 			mDriver->endScene();
 

@@ -41,6 +41,7 @@ public:
 	time_t lastMissileTime();
 	void setLastMissileTime(time_t s);
 	void beAttacked();
+	int getFullHp();
 	void reInit();
 	TEnemyTank();
 	void setTankAnimator(io::path animFile, io::path textureFile);//…Ë÷√ÃπøÀanimator
